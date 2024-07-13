@@ -42,7 +42,7 @@ const Header = () => {
                     {item.name}
                   </Link>
                 </li>
-                <li key={item.id + i} className="text-gray-300">
+                <li key={item.href} className="text-gray-300">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
