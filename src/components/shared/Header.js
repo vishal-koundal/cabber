@@ -72,7 +72,7 @@ const Header = () => {
             <Button
               variant="white"
               otherCss="hidden lg:inline-block ml-3"
-              href="/login"
+              href="/signup"
             >
               Sign up
             </Button>

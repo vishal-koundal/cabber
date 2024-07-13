@@ -29,7 +29,7 @@ const page = () => {
             <p className="mt-10 text-center text-sm text-gray-500">
               Not a member?
               <Link
-                href="/auth/register"
+                href="/signup"
                 className="ml-2 font-semibold leading-6 text-brand"
               >
                 Create Account

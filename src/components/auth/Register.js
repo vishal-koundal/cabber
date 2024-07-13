@@ -6,7 +6,7 @@ import React from 'react'
 
 const formId = 'RegisterForm'
 
-const RegisterForm = () => {
+const RegisterForm = (props) => {
   const {
     touched,
     errors,
@@ -18,8 +18,8 @@ const RegisterForm = () => {
   } = props
 
   return (
-    <form id={formId} onSubmit={handleSubmit} className="space-y-6">
-      <div className="md:flex md:space-y-0 md:space-x-4 space-y-6">
+    <form id={formId} onSubmit={handleSubmit} className="space-y-5">
+      <div className="md:flex md:space-y-0 md:space-x-4 space-y-5">
         <InputField
           label="First Name"
           name="firstName"
@@ -58,14 +58,15 @@ const RegisterForm = () => {
         onBlur={handleBlur}
         error={errors.password && touched.password ? errors.password : ''}
       />
-      <div>
+      <div className="pt-1.5">
         <Button
-          isFullWidth
+          variant="black"
+          size="large"
           disabled={isSubmitting}
-          loading={isSubmitting}
           type="submit"
+          fullWidth
         >
-          {isSubmitting ? 'Loading...' : 'Sign Up'}
+          {isSubmitting ? 'Loading...' : 'SIGN UP'}
         </Button>
       </div>
     </form>
