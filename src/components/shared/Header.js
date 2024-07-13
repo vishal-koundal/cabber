@@ -5,9 +5,10 @@ import Logo from './Logo'
 
 const navLinks = [
   { id: '1', name: 'Home', href: '/' },
-  { id: '1', name: 'About Us', href: '/about' },
-  { id: '1', name: 'Book a Car', href: '/cars' },
-  { id: '1', name: 'Contact', href: '/contact' },
+  { id: '2', name: 'About Us', href: '/about' },
+  { id: '3', name: 'Book a Car', href: '/cars' },
+  { id: '4', name: 'Blog', href: '/blog' },
+  { id: '5', name: 'Contact', href: '/contact' },
 ]
 const Header = () => {
   return (
@@ -42,22 +43,24 @@ const Header = () => {
                     {item.name}
                   </Link>
                 </li>
-                <li key={item.href} className="text-gray-300">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    stroke="currentColor"
-                    className="w-4 h-4 current-fill"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
-                    />
-                  </svg>
-                </li>
+                {i < navLinks.length - 1 && (
+                  <li key={item.href} className="text-gray-300">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      stroke="currentColor"
+                      className="w-4 h-4 current-fill"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
+                      />
+                    </svg>
+                  </li>
+                )}
               </>
             ))}
           </ul>
