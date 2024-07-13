@@ -1,4 +1,4 @@
-import Button from '@/elements/MainButton'
+import Button from '@/elements/Button'
 import Link from 'next/link'
 
 export default function Page() {
