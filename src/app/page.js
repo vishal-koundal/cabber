@@ -1,9 +1,12 @@
+import Hero from '@/components/home/Hero'
+import Steps from '@/components/home/Steps'
 import Image from 'next/image'
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      Home page
+    <main className="min-h-screen ">
+      <Hero />
+      <Steps />
     </main>
   )
 }
