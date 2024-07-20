@@ -22,6 +22,7 @@ const config = {
   facebook: 'https://www.facebook.com/@Cabber',
   instagram: 'https://www.instagram.com/@Cabber',
   youtube: 'https://www.youtube.com/@Cabber',
+  currency: '₹',
 }
 
 export default config
