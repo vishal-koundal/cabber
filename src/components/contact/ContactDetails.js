@@ -1,26 +1,29 @@
 import Title from '@/elements/Title'
 import config from '@/utils/config'
 import React from 'react'
+import Location from '../../../public/icons/location'
+import Email from '../../../public/icons/email'
+import Telephone from '../../../public/icons/telephone'
 
 const ContactDetails = () => {
   const details = [
     {
       id: 1,
-      icon: '',
+      icon: <Location />,
       title: 'Address',
       details: config.completeAddress,
       href: '',
     },
     {
       id: 2,
-      icon: '',
+      icon: <Email />,
       title: 'Mail us',
       details: config.email,
       href: `mailto:${config.email}`,
     },
     {
       id: 3,
-      icon: '',
+      icon: <Telephone />,
       title: 'Mobile no.',
       details: config.telephone,
       href: `tel:${config.telephone}`,
@@ -46,19 +49,19 @@ const ContactDetails = () => {
                   {item.title}
                 </dt>
 
-                <dd className="text-4xl font-extrabold text-primary md:text-5xl">
-                  $4.8m
+                <dd className="text-4xl font-extrabold text-primary md:text-5xl mx-auto">
+                  {item.icon}
                 </dd>
-                <dt className="order-last text-lg font-medium text-brand">
+                <dt className="order-last text-lg font-medium mt-1 text-brand ">
                   {item.href ? (
                     <a
                       href={item.href}
-                      className="text-sm hover:text-brand hover:underline"
+                      className="text-sm hover:text-primary hover:underline font-light"
                     >
                       {item.details}
                     </a>
                   ) : (
-                    <p className="text-sm hover:text-brand hover:underline leading-6">
+                    <p className="text-sm hover:text-primary hover:underline font-light leading-6">
                       {item.details}
                     </p>
                   )}
