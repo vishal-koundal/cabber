@@ -19,6 +19,9 @@ const config = {
   },
   completeAddress:
     '99, Lamond Crescent, EH54 69G, Boness, Scotland, United Kingdom',
+  facebook: 'https://www.facebook.com/@Cabber',
+  instagram: 'https://www.instagram.com/@Cabber',
+  youtube: 'https://www.youtube.com/@Cabber',
 }
 
 export default config
