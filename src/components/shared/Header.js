@@ -32,19 +32,17 @@ const Header = () => {
           </div>
           <ul className="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
             {navLinks.map((item, i) => (
-              <>
-                <li key={item.id}>
-                  <Link
-                    href={item.href}
-                    className={`text-sm text-white hover:text-white/80 ${
-                      i === 0 ? 'font-semibold' : ''
-                    }`}
-                  >
-                    {item.name}
-                  </Link>
-                </li>
+              <li key={item.id} className="flex items-center">
+                <Link
+                  href={item.href}
+                  className={`text-sm text-white hover:text-white/80 ${
+                    i === 0 ? 'font-semibold' : ''
+                  }`}
+                >
+                  {item.name}
+                </Link>
                 {i < navLinks.length - 1 && (
-                  <li key={item.href} className="text-gray-300">
+                  <span className="text-gray-300 pl-6">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -54,14 +52,14 @@ const Header = () => {
                     >
                       <path
                         stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
                       />
                     </svg>
-                  </li>
+                  </span>
                 )}
-              </>
+              </li>
             ))}
           </ul>
           <div>
@@ -103,8 +101,8 @@ const Header = () => {
                 >
                   <path
                     stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M6 18L18 6M6 6l12 12"
                   ></path>
                 </svg>

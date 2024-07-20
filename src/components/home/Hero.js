@@ -12,7 +12,7 @@ const Hero = () => {
         <div class="max-w-xl">
           <h1 class="text-3xl font-extrabold text-white sm:text-5xl">
             Let us find your cab
-            <strong class="block font-extrabold text-primary mt-2">
+            <strong class="block font-extrabold text-white mt-2">
               Cabber.
             </strong>
           </h1>

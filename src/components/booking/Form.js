@@ -21,7 +21,7 @@ const Form = (props) => {
     <div>
       <div>
         <div className="sm:hidden">
-          <label for="Tab" className="sr-only">
+          <label htmlFor="Tab" className="sr-only">
             Tab
           </label>
 
@@ -31,7 +31,7 @@ const Form = (props) => {
             onChange={handleChange}
             className="w-full rounded-md border-gray-200"
           >
-            <option select>Cab Booking</option>
+            <option>Cab Booking</option>
             <option>Self Drive</option>
           </select>
         </div>
