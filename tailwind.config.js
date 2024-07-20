@@ -11,7 +11,7 @@ module.exports = {
     extend: {
       colors: () => ({
         brand: '#000000',
-        primary: '#e9543f ',
+        primary: '#5046e5 ',
         secondary: '#343434',
         light: '#f6f6f6',
         grayDark: '#797979',
@@ -21,8 +21,8 @@ module.exports = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        'gradient-red':
-          'linear-gradient(to top, #E95440 0%, rgba(233, 84, 64), 0.3) 100%)',
+        'gradient-primary':
+          'linear-gradient(to top, #5046e5 0%, #5046e5, 0.3) 100%)',
       },
       boxShadow: {
         drop: 'rgba(149, 157, 165, 0.2) 0px 8px 24px',

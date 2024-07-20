@@ -13,8 +13,8 @@ const BlogItem = () => {
           height={300}
           className="rounded-lg transition ease-in-out delay-0 duration-500 group-hover:scale-[1.15] overflow-hidden h-[300px]"
         />
-        {/* linear-gradient(to top, #E95440 0%, rgba(233, 84, 64, 0.3) 100%) */}
-        <div className="bg-black/10 group-hover:bg-gradient-to-t group-hover:from-[#E95440] from-0% group-hover:to-[233, 84, 64, 0.3] to-100% absolute inset-0 pl-6 pt-5 text-white rounded-lg">
+        {/* linear-gradient(to top, #5046e5 0%, rgba(233, 84, 64, 0.3) 100%) */}
+        <div className="bg-black/10 group-hover:bg-gradient-to-t group-hover:from-[#5046e580] from-0% group-hover:to-#5046e530 to-100% absolute inset-0 pl-6 pt-5 text-white rounded-lg">
           <time class="" datetime="2024-04-18T17:07:15+00:00">
             <span class="text-5xl">18.</span>
             <br /> <span class="text-base">April, 2024</span>
