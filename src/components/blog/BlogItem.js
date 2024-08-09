@@ -1,8 +1,8 @@
-import Image from 'next/image'
-import Link from 'next/link'
+import Image from 'next/image';
+import Link from 'next/link';
 
-import React from 'react'
-import ArrowUp from '../../../public/icons/ArrowUp'
+import React from 'react';
+import ArrowUp from '../../../public/icons/ArrowUp';
 
 const BlogItem = () => {
   return (
@@ -16,9 +16,9 @@ const BlogItem = () => {
         />
         {/* linear-gradient(to top, #5046e5 0%, rgba(233, 84, 64, 0.3) 100%) */}
         <div className="bg-black/10 group-hover:bg-gradient-to-t group-hover:from-[#5046e580] from-0% group-hover:to-#5046e530 to-100% absolute inset-0 pl-6 pt-5 text-white rounded-lg">
-          <time class="" datetime="2024-04-18T17:07:15+00:00">
-            <span class="text-5xl">18.</span>
-            <br /> <span class="text-base">April, 2024</span>
+          <time className="" datetime="2024-04-18T17:07:15+00:00">
+            <span className="text-5xl">18.</span>
+            <br /> <span className="text-base">April, 2024</span>
           </time>
         </div>
       </div>
@@ -38,7 +38,7 @@ const BlogItem = () => {
         </Link>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default BlogItem
+export default BlogItem;

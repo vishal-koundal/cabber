@@ -1,7 +1,7 @@
-import Button from '@/elements/Button'
-import Link from 'next/link'
-import React from 'react'
-import Logo from './Logo'
+import Button from '@/elements/Button';
+import Link from 'next/link';
+import React from 'react';
+import Logo from './Logo';
 
 const navLinks = [
   { id: '1', name: 'Home', href: '/' },
@@ -9,7 +9,7 @@ const navLinks = [
   { id: '3', name: 'Book a Car', href: '/cars' },
   { id: '4', name: 'Blog', href: '/blog' },
   { id: '5', name: 'Contact', href: '/contact' },
-]
+];
 const Header = () => {
   return (
     <div className="bg-brand">
@@ -51,7 +51,7 @@ const Header = () => {
                       viewBox="0 0 24 24"
                     >
                       <path
-                        stroke-linecap="round"
+                        strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeWidth="2"
                         d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
@@ -100,7 +100,7 @@ const Header = () => {
                   stroke="currentColor"
                 >
                   <path
-                    stroke-linecap="round"
+                    strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth="2"
                     d="M6 18L18 6M6 6l12 12"
@@ -175,7 +175,7 @@ const Header = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

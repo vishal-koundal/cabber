@@ -1,15 +1,15 @@
-import React from 'react'
+import React from 'react';
 
 const ReviewItem = () => {
   return (
-    <div class="mb-8 sm:break-inside-avoid">
-      <blockquote class="rounded-lg bg-gray-50 p-6 shadow-sm sm:p-8">
-        <div class="flex items-center gap-4">
+    <div className="mb-8 sm:break-inside-avoid">
+      <blockquote className="rounded-lg bg-gray-50 p-6 shadow-sm sm:p-8">
+        <div className="flex items-center gap-4">
           <div>
-            <div class="flex justify-center gap-0.5 text-green-500">
+            <div className="flex justify-center gap-0.5 text-green-500">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
+                className="h-5 w-5"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -17,7 +17,7 @@ const ReviewItem = () => {
               </svg>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
+                className="h-5 w-5"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -25,7 +25,7 @@ const ReviewItem = () => {
               </svg>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
+                className="h-5 w-5"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -33,7 +33,7 @@ const ReviewItem = () => {
               </svg>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
+                className="h-5 w-5"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -41,7 +41,7 @@ const ReviewItem = () => {
               </svg>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
+                className="h-5 w-5"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -49,11 +49,13 @@ const ReviewItem = () => {
               </svg>
             </div>
 
-            <p class="mt-0.5 text-lg font-medium text-gray-900">Paul Starr</p>
+            <p className="mt-0.5 text-lg font-medium text-gray-900">
+              Paul Starr
+            </p>
           </div>
         </div>
 
-        <p class="mt-4 text-gray-700">
+        <p className="mt-4 text-gray-700">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa sit
           rerum incidunt, a consequuntur recusandae ab saepe illo est quia
           obcaecati neque quibusdam eius accusamus error officiis atque
@@ -61,7 +63,7 @@ const ReviewItem = () => {
         </p>
       </blockquote>
     </div>
-  )
-}
+  );
+};
 
-export default ReviewItem
+export default ReviewItem;
