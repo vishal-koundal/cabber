@@ -30,6 +30,13 @@ const CarDetailsForm = () => {
             ]}
           />
         </div>
+        <div>
+          <InputField
+            label="Seats Available"
+            type="number"
+            placeholder="Ex:- 4"
+          />
+        </div>
 
         <div class="sm:col-span-2">
           <TextAreaField
