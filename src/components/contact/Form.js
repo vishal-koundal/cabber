@@ -1,11 +1,11 @@
-import InputField from '@/elements/InputField'
-import Button from '@/elements/Button'
-import { withFormik } from 'formik'
-import * as Yup from 'yup'
-import React from 'react'
-import TextAreaField from '@/elements/TextAreaField'
+import InputField from '@/elements/InputField';
+import Button from '@/elements/Button';
+import { withFormik } from 'formik';
+import * as Yup from 'yup';
+import React from 'react';
+import TextAreaField from '@/elements/TextAreaField';
 
-const formId = 'ContactForm'
+const formId = 'ContactForm';
 
 const RegisterForm = (props) => {
   const {
@@ -16,7 +16,7 @@ const RegisterForm = (props) => {
     handleChange,
     handleBlur,
     handleSubmit,
-  } = props
+  } = props;
 
   return (
     <form
@@ -83,12 +83,12 @@ const RegisterForm = (props) => {
           type="submit"
           // fullWidth
         >
-          {isSubmitting ? 'Loading...' : 'SIGN UP'}
+          {isSubmitting ? 'Loading...' : 'Submit'}
         </Button>
       </div>
     </form>
-  )
-}
+  );
+};
 
 export default withFormik({
   mapPropsToValues: () => ({
@@ -109,8 +109,8 @@ export default withFormik({
   }),
 
   handleSubmit: (values, { setSubmitting, props }) => {
-    props.onSubmit(values)
-    setSubmitting(false)
+    props.onSubmit(values);
+    setSubmitting(false);
   },
   displayName: formId, // helps with React DevTools
-})(RegisterForm)
+})(RegisterForm);

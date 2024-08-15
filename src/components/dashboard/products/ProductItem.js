@@ -1,9 +1,28 @@
-import config from '@/utils/config'
-import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
+'use client';
+import config from '@/utils/config';
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
+import Swal from 'sweetalert2';
 
 function ProductItem({ item }) {
+  const handleDelete = () => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: 'Deleted!',
+          text: 'Your file has been deleted.',
+          icon: 'success',
+        });
+      }
+    });
+  };
   return (
     <div className="flex gap-3 text-brand items-center hover:bg-gray-100 md:-mx-6 -mx-4 md:px-6 px-3 md:py-5 py-3">
       <div className="md:flex w-6/12">
@@ -46,16 +65,19 @@ function ProductItem({ item }) {
         {config.currency} {item.price || '3,000'}
       </span>
       <Link
-        href="/"
+        href={`/dashboard/car-details?id=${item.id}`}
         className="py-2 px-3 font-medium text-primary hover:text-primary/80 duration-150 hover:bg-white rounded-lg"
       >
         Edit
       </Link>
-      <button className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-white rounded-lg">
+      <button
+        onClick={handleDelete}
+        className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-white rounded-lg"
+      >
         Delete
       </button>
     </div>
-  )
+  );
 }
 
-export default ProductItem
+export default ProductItem;
