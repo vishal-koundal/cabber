@@ -5,6 +5,7 @@ import { PortableText } from '@portabletext/react';
 import Image from 'next/image';
 
 import config from '../../utils/config';
+import Link from 'next/link';
 
 function ImageItem({ item }) {
   return (
@@ -113,13 +114,15 @@ function CarDetails({
                   </div>
                 </div>
                 <div className="pt-10">
-                  <button
-                    type="button"
-                    className="w-full  rounded bg-brand px-6 py-3 text-sm font-bold uppercase tracking-wide text-white"
-                    onClick={bookCar}
-                  >
-                    Book Now
-                  </button>
+                  <Link href="/create-booking">
+                    <button
+                      type="button"
+                      className="w-full  rounded bg-brand px-6 py-3 text-sm font-bold uppercase tracking-wide text-white"
+                      onClick={bookCar}
+                    >
+                      Book Now
+                    </button>
+                  </Link>
                 </div>
               </form>
             </div>
