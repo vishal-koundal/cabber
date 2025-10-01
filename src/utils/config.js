@@ -1,27 +1,27 @@
 const config = {
   debug: process.env.NODE_ENV === 'development',
-  siteName: process.env.NEXT_PUBLIC_ENV_SITE_NAME || 'Cabber',
-  siteUrl: process.env.SITE_URL || 'https://cabber.vercel.app',
+  siteName: process.env.NEXT_PUBLIC_ENV_SITE_NAME || 'Luxurycarswale',
+  siteUrl: process.env.SITE_URL || 'https://luxurycarswale.com',
   description:
-    'Welcome to Cabber, your trusted platform for rental, self-drive, and cab booking services. Experience seamless and affordable travel solutions tailored to your needs, anytime, anywhere.',
-  projectKey: 'cabbber-0987',
+    'Welcome to Luxurycarswale, your trusted platform for rental, self-drive, and cab booking services. Experience seamless and affordable travel solutions tailored to your needs, anytime, anywhere.',
+  projectKey: 'luxurycarswale-0987',
   graphQlUri: '',
   graphQlUriDev: '',
-  email: 'cabber@cabbook.com',
-  telephone: '+441234567891',
+  email: 'luxurycarswale@hi.com',
+  telephone: '+91-9876543210',
   location: '22 fk11hg',
-  twitter: '@cabber',
+  twitter: '@luxurycarswale',
   address: {
     area: '99, Lamond Crescent',
     postcode: 'EH54 69G',
     locality: 'Boness, Scotland',
-    country: 'United Kingdom',
+    country: 'India',
   },
   completeAddress:
     '99, Lamond Crescent, EH54 69G, Boness, Scotland, United Kingdom',
-  facebook: 'https://www.facebook.com/@Cabber',
-  instagram: 'https://www.instagram.com/@Cabber',
-  youtube: 'https://www.youtube.com/@Cabber',
+  facebook: 'https://www.facebook.com/@Luxurycarswale',
+  instagram: 'https://www.instagram.com/@Luxurycarswale',
+  youtube: 'https://www.youtube.com/@Luxurycarswale',
   currency: '₹',
 }
 
