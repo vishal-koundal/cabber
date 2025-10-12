@@ -40,7 +40,7 @@ export default defineType({
   preview: {
     select: {
       title: 'name',
-      subtitle: 'category',
+      subtitle: 'description',
       media: 'featureImage',
     },
     prepare(selection) {

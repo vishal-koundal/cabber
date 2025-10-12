@@ -59,7 +59,7 @@ export default defineType({
       of: [
         {
           type: 'reference', // Each item in the array is a reference
-          to: [{type: 'category'}], // Reference to the 'category' document type
+          to: [{type: 'service'}], // Reference to the 'category' document type
         },
       ],
     }),
