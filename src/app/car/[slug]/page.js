@@ -1,76 +1,138 @@
-import CarDetails from '@/components/cars/CarDetails';
+// import { type SanityDocument } from 'next-sanity';
+import Image from 'next/image';
+import { notFound } from 'next/navigation';
 
-import React from 'react';
+import { getCarBySlug, urlFor } from '../../../../lib/sanity';
 
-const items = [1, 2, 3];
+export default async function CarPage({ params }) {
+  const car = await getCarBySlug(params.slug);
 
-const page = () => {
+  if (!car) {
+    notFound();
+  }
+
   return (
-    <div className="container mx-auto md:px-6 px-4 md:py-16 py-10 min-h-screen">
-      <CarDetails />
+    <main className="container mx-auto min-h-screen max-w-4xl p-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Car Images */}
+        <div className="space-y-4">
+          {car.images && car.images.length > 0 && (
+            <div className="relative h-96 w-full rounded-lg overflow-hidden">
+              <Image
+                src={
+                  urlFor(car.images[0])?.width(800).height(400).url() ||
+                  car.images[0].asset.url
+                }
+                alt={car.images[0].alt || car.title}
+                fill
+                className="object-cover"
+              />
+            </div>
+          )}
+          {car.images && car.images.length > 1 && (
+            <div className="grid grid-cols-3 gap-2">
+              {car.images.slice(1, 4).map((image, index) => (
+                <div
+                  key={index}
+                  className="relative h-24 w-full rounded overflow-hidden"
+                >
+                  <Image
+                    src={
+                      urlFor(image)?.width(300).height(200).url() ||
+                      image.asset.url
+                    }
+                    alt={image.alt || `${car.title} ${index + 2}`}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
 
-      <div className="flow-root bg-light rounded-lg px-5">
-        <div className="divide-y divide-white">
-          {items.map((item) => (
-            <details className="group py-5 [&_summary::-webkit-details-marker]:hidden">
-              <summary className="flex cursor-pointer items-center justify-between gap-1.5 text-gray-900">
-                <h2 className="text-lg font-medium text-brand">
-                  ID VERIFICATION
-                </h2>
+        {/* Car Details */}
+        <div className="space-y-6">
+          <div>
+            <h1 className="text-3xl font-bold mb-2">{car.title}</h1>
+            <div className="flex items-center gap-4 mb-4">
+              <span className="text-3xl font-bold text-blue-600">
+                ${car.price}/day
+              </span>
+              <span
+                className={`px-3 py-1 rounded-full text-sm font-medium ${
+                  car.availability
+                    ? 'bg-green-100 text-green-800'
+                    : 'bg-red-100 text-red-800'
+                }`}
+              >
+                {car.availability ? 'Available' : 'Unavailable'}
+              </span>
+            </div>
+            <p className="text-gray-700 leading-relaxed">{car.description}</p>
+          </div>
 
-                <span className="relative size-5 shrink-0 text-primary">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="absolute inset-0 size-5 opacity-100 group-open:opacity-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="absolute inset-0 size-5 opacity-0 group-open:opacity-100"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
+          {/* Car Specifications */}
+          <div className="bg-gray-50 p-4 rounded-lg">
+            <h3 className="font-semibold mb-3">Specifications</h3>
+            <div className="grid grid-cols-2 gap-3 text-sm">
+              <div>
+                <span className="text-gray-600">Seats:</span>
+                <span className="ml-2 font-medium">{car.seats}</span>
+              </div>
+              <div>
+                <span className="text-gray-600">Transmission:</span>
+                <span className="ml-2 font-medium capitalize">
+                  {car.transmission}
                 </span>
-              </summary>
+              </div>
+              <div>
+                <span className="text-gray-600">Fuel Type:</span>
+                <span className="ml-2 font-medium capitalize">
+                  {car.fuelType}
+                </span>
+              </div>
+              <div>
+                <span className="text-gray-600">Category:</span>
+                <span className="ml-2 font-medium">
+                  {car.category?.title || 'N/A'}
+                </span>
+              </div>
+            </div>
+          </div>
 
-              <p className="mt-4 leading-relaxed text-brand text-sm font-light">
-                Please keep your original or DigiLocker of Driving License
-                handy. While delivering the car to you, our executive will
-                verify your original or DigiLocker of Driving License and ID
-                proof (same as the ones whose details were provided while making
-                the booking). This verification is mandatory. In the unfortunate
-                case where you cannot show these documents, we will not be able
-                to handover the car to you, and it will be treated as a late
-                cancellation (100% of the fare would be payable). Driving
-                license printed on A4 sheet of paper (original or otherwise)
-                will not be considered as a valid document. We may ask for
-                additional documents for verification in some cases, e.g., local
-                ID or proof of travel.
-              </p>
-            </details>
-          ))}
+          {/* Features */}
+          {car.features && car.features.length > 0 && (
+            <div>
+              <h3 className="font-semibold mb-3">Features</h3>
+              <div className="flex flex-wrap gap-2">
+                {car.features.map((feature, index) => (
+                  <span
+                    key={index}
+                    className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"
+                  >
+                    {feature.title}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Book Now Button */}
+          <div className="pt-4">
+            <button
+              className={`w-full py-3 px-6 rounded-lg font-semibold text-white transition-colors ${
+                car.availability
+                  ? 'bg-blue-600 hover:bg-blue-700'
+                  : 'bg-gray-400 cursor-not-allowed'
+              }`}
+              disabled={!car.availability}
+            >
+              {car.availability ? 'Book This Car' : 'Currently Unavailable'}
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </main>
   );
-};
-
-export default page;
+}

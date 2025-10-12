@@ -31,8 +31,8 @@ const BlogItem = () => {
           Lorem ipsum doler sit amit is the dummy text for testing
         </p>
         <Link
-          href="/"
-          className="border border-brand h-12 w-12 rounded-full flex items-center justify-center mt-5"
+          href="/blog/sample-blog-post"
+          className="border border-brand h-12 w-12 rounded-full flex items-center justify-center mt-5 hover:bg-brand hover:text-white transition-colors"
         >
           <ArrowUp />
         </Link>

@@ -64,18 +64,11 @@ const Header = () => {
           </ul>
           <div>
             <Button
-              variant="gray"
-              otherCss="hidden lg:inline-block"
-              href="/login"
-            >
-              Login
-            </Button>
-            <Button
               variant="white"
-              otherCss="hidden lg:inline-block ml-3"
-              href="/signup"
+              otherCss="hidden lg:inline-block"
+              href="/contact"
             >
-              Sign up
+              Contact
             </Button>
           </div>
         </nav>
@@ -155,16 +148,10 @@ const Header = () => {
             <div className="mt-auto">
               <div className="pt-6">
                 <a
-                  className="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl"
-                  href="#"
+                  className="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700 rounded-xl"
+                  href="/contact"
                 >
-                  Sign in
-                </a>
-                <a
-                  className="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl"
-                  href="#"
-                >
-                  Sign Up
+                  Contact
                 </a>
               </div>
               <p className="my-4 text-xs text-center text-gray-400">

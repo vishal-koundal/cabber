@@ -23,6 +23,6 @@ const config = {
   instagram: 'https://www.instagram.com/@Luxurycarswale',
   youtube: 'https://www.youtube.com/@Luxurycarswale',
   currency: '₹',
-}
+};
 
-export default config
+export default config;
