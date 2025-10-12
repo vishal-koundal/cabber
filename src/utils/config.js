@@ -1,9 +1,10 @@
 const config = {
   debug: process.env.NODE_ENV === 'development',
-  siteName: process.env.NEXT_PUBLIC_ENV_SITE_NAME || 'Luxurycarswale',
+  siteName: process.env.NEXT_PUBLIC_ENV_SITE_NAME || 'Luxury Cars Wale',
   siteUrl: process.env.SITE_URL || 'https://luxurycarswale.com',
+  owner: 'Kapil Bhatia',
   description:
-    'Welcome to Luxurycarswale, your trusted platform for rental, self-drive, and cab booking services. Experience seamless and affordable travel solutions tailored to your needs, anytime, anywhere.',
+    'Welcome to Luxury Cars Wale, your trusted platform for rental, self-drive, and cab booking services. Experience seamless and affordable travel solutions tailored to your needs, anytime, anywhere.',
   projectKey: 'luxurycarswale-0987',
   graphQlUri: '',
   graphQlUriDev: '',

@@ -5,7 +5,7 @@ import { getAllServices } from '../../../lib/sanity';
 
 const Services = async () => {
   const services = await getAllServices(3);
-  console.log('services', services);
+  // console.log('services', services);
   if (!services || services.length === 0) {
     return null;
   }

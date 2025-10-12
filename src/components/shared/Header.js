@@ -103,46 +103,16 @@ const Header = () => {
             </div>
             <div>
               <ul>
-                <li className="mb-1">
-                  <a
-                    className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
-                    href="#"
-                  >
-                    Home
-                  </a>
-                </li>
-                <li className="mb-1">
-                  <a
-                    className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
-                    href="#"
-                  >
-                    About Us
-                  </a>
-                </li>
-                <li className="mb-1">
-                  <a
-                    className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
-                    href="#"
-                  >
-                    Services
-                  </a>
-                </li>
-                <li className="mb-1">
-                  <a
-                    className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
-                    href="#"
-                  >
-                    Pricing
-                  </a>
-                </li>
-                <li className="mb-1">
-                  <a
-                    className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
-                    href="#"
-                  >
-                    Contact
-                  </a>
-                </li>
+                {navLinks.map((item, i) => (
+                  <li className="mb-1" key={item.id}>
+                    <Link
+                      href={item.href}
+                      className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
             <div className="mt-auto">

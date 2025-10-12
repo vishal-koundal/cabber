@@ -13,6 +13,7 @@ import {
 import { client } from '../../lib/sanity';
 
 export default async function Home() {
+  const settings = getSiteSettings();
   return (
     <main className="min-h-screen ">
       <Hero />

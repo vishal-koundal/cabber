@@ -3,6 +3,7 @@
 import Button from '@/elements/Button';
 import React from 'react';
 import BookingForm from '@/components/booking/Form';
+import config from '@/utils/config';
 
 const Hero = () => {
   return (
@@ -13,13 +14,12 @@ const Hero = () => {
           <h1 className="text-3xl font-extrabold text-white sm:text-5xl">
             Let us find your cab
             <strong className="block font-extrabold text-white mt-2">
-              Cabber.
+              {config.title}
             </strong>
           </h1>
 
           <p className="mt-4 max-w-lg text-white sm:text-lg/relaxed">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt
-            illo tenetur fuga ducimus numquam ea!
+            {config.description}
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4 text-center">
@@ -28,9 +28,9 @@ const Hero = () => {
             </Button>
           </div>
         </div>
-        <div className="max-w-md bg-white w-full rounded-lg md:p-10 p-4">
+        {/* <div className="max-w-md bg-white w-full rounded-lg md:p-10 p-4">
           <BookingForm />
-        </div>
+        </div> */}
       </div>
     </section>
   );

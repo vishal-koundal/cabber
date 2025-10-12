@@ -1,7 +1,7 @@
-import config from '@/utils/config'
-import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
+import config from '@/utils/config';
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
 
 const socials = [
   {
@@ -19,7 +19,7 @@ const socials = [
     icon: '/icons/instagram.png',
     href: config.instagram,
   },
-]
+];
 const Footer = () => {
   return (
     <footer className="footer footer-center bg-light text-base-content rounded px-10 pt-10 pb-5">
@@ -49,11 +49,17 @@ const Footer = () => {
         >
           Contact
         </Link>
+        <Link
+          href="/blogs"
+          className="link link-hover text-brand hover:text-primary"
+        >
+          Blog
+        </Link>
       </nav>
       <nav>
         <div className="grid grid-flow-col gap-4">
           {socials.map((item) => (
-            <a href={item.href} key={item.id} className="">
+            <a href={item.href} target="_blank" key={item.id} className="">
               <Image src={item.icon} height={37} width={37} />
             </a>
           ))}
@@ -67,7 +73,7 @@ const Footer = () => {
         </p>
       </aside>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
