@@ -1,33 +1,35 @@
-import Title from '@/elements/Title'
-import config from '@/utils/config'
-import React from 'react'
+import Title from '@/elements/Title';
+import config from '@/utils/config';
+import React from 'react';
 
-import Image from 'next/image'
+import Image from 'next/image';
 
-const ContactDetails = () => {
+const ContactDetails = ({ settings }) => {
+  const contactInfo = settings?.contactInfo || {};
+
   const details = [
     {
       id: 1,
       icon: '/icons/map.png',
       title: 'Address',
-      details: config.completeAddress,
+      details: contactInfo.address || config.completeAddress,
       href: '',
     },
     {
       id: 2,
       icon: '/icons/email.png',
       title: 'Mail us',
-      details: config.email,
-      href: `mailto:${config.email}`,
+      details: contactInfo.email || config.email,
+      href: `mailto:${contactInfo.email || config.email}`,
     },
     {
       id: 3,
       icon: '/icons/phone-call.png',
       title: 'Mobile no.',
-      details: config.telephone,
-      href: `tel:${config.telephone}`,
+      details: contactInfo.mobile || config.telephone,
+      href: `tel:${contactInfo.mobile || config.telephone}`,
     },
-  ]
+  ];
   return (
     <section className="bg-white">
       <div className="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 md:py-20 lg:px-8">
@@ -71,7 +73,7 @@ const ContactDetails = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default ContactDetails
+export default ContactDetails;

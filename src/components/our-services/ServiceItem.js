@@ -9,7 +9,7 @@ const ServiceItem = ({ item }) => {
     <div className="overflow-hidden  relative group transition delay-0 duration-500 mb-4">
       <div className="relative  overflow-hidden rounded-lg">
         <Image
-          src={sanityImageUrl(item.featureImage)}
+          src={sanityImageUrl({ source: item.featureImage })}
           width={550}
           height={300}
           className="object-cover rounded-lg transition ease-in-out delay-0 duration-500 group-hover:scale-[1.15] overflow-hidden "

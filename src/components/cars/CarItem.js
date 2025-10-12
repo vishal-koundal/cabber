@@ -33,7 +33,7 @@ const CarItem = ({ car }) => {
         <div className="relative">
           {car.featureImage ? (
             <Image
-              src={sanityImageUrl(car.featureImage)}
+              src={sanityImageUrl({ source: car.featureImage })}
               alt={car.name}
               width={500}
               height={270}

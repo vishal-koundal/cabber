@@ -3,7 +3,106 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 
-import { getBlogBySlug, urlFor } from '../../../../lib/sanity';
+import { getBlogBySlug, sanityImageUrl } from '../../../../lib/sanity';
+import config from '@/utils/config';
+
+export async function generateMetadata({ params }) {
+  const blog = await getBlogBySlug(params.slug);
+
+  if (!blog) {
+    return {
+      title: 'Blog Post Not Found',
+      description: 'The requested blog post could not be found.',
+    };
+  }
+
+  return {
+    title: `${blog.title} | ${config.siteName}`,
+    description:
+      blog.excerpt ||
+      blog.content ||
+      `Read ${blog.title} on ${config.siteName}. ${config.description}`,
+    keywords: [
+      ...(config.keywords || [
+        'luxury cars',
+        'car rental',
+        'cab service',
+        'self drive',
+        'wedding cars',
+      ]),
+      blog.title,
+      ...(blog.tags || []),
+      'blog',
+      'car blog',
+      'travel blog',
+    ],
+    authors: [{ name: blog.author || config.siteName }],
+    openGraph: {
+      title: `${blog.title} | ${config.siteName}`,
+      description:
+        blog.excerpt ||
+        blog.content ||
+        `Read ${blog.title} on ${config.siteName}. ${config.description}`,
+      type: 'article',
+      url: `${config.siteUrl}/blog/${params.slug}`,
+      publishedTime: blog.publishedAt,
+      authors: [blog.author || config.siteName],
+      images:
+        blog.featuredImage &&
+        sanityImageUrl({
+          source: blog.featuredImage,
+          width: 1200,
+          height: 630,
+        })
+          ? [
+              {
+                url: sanityImageUrl({
+                  source: blog.featuredImage,
+                  width: 1200,
+                  height: 630,
+                }),
+                width: 1200,
+                height: 630,
+                alt: blog.title,
+              },
+            ]
+          : [
+              {
+                url: '/logo-small.png',
+                width: 1200,
+                height: 630,
+                alt: blog.title,
+              },
+            ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${blog.title} | ${config.siteName}`,
+      description:
+        blog.excerpt ||
+        blog.content ||
+        `Read ${blog.title} on ${config.siteName}. ${config.description}`,
+      images:
+        blog.featuredImage &&
+        sanityImageUrl({
+          source: blog.featuredImage,
+          width: 1200,
+          height: 630,
+        })
+          ? [
+              sanityImageUrl({
+                source: blog.featuredImage,
+                width: 1200,
+                height: 630,
+              }),
+            ]
+          : ['/logo-small.png'],
+    },
+    alternates: {
+      canonical: `${config.siteUrl}/blog/${params.slug}`,
+    },
+  };
+}
 
 export default async function BlogPostPage({ params }) {
   const blog = await getBlogBySlug(params.slug);
@@ -41,15 +140,26 @@ export default async function BlogPostPage({ params }) {
         {/* Featured Image */}
         {blog.featuredImage && (
           <div className="relative h-64 md:h-96 w-full rounded-lg overflow-hidden mb-8">
-            <Image
-              src={
-                urlFor(blog.featuredImage)?.width(800).height(400).url() ||
-                blog.featuredImage.asset.url
-              }
-              alt={blog.featuredImage.alt || blog.title}
-              fill
-              className="object-cover"
-            />
+            {sanityImageUrl({
+              source: blog.featuredImage,
+              width: 800,
+              height: 400,
+            }) ? (
+              <Image
+                src={sanityImageUrl({
+                  source: blog.featuredImage,
+                  width: 800,
+                  height: 400,
+                })}
+                alt={blog.featuredImage.alt || blog.title}
+                fill
+                className="object-cover"
+              />
+            ) : (
+              <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+                <span className="text-gray-500">No Image Available</span>
+              </div>
+            )}
           </div>
         )}
 

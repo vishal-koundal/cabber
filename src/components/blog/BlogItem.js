@@ -18,7 +18,11 @@ const BlogItem = ({ blog }) => {
         <div className="relative h-[300px] overflow-hidden rounded-lg">
           {blog.image && (
             <Image
-              src={sanityImageUrl(blog.image)}
+              src={sanityImageUrl({
+                source: blog.image,
+                width: 400,
+                height: 250,
+              })}
               alt={blog.title}
               fill
               className="object-cover rounded-lg transition ease-in-out delay-0 duration-500 group-hover:scale-[1.15] overflow-hidden h-[300px]"

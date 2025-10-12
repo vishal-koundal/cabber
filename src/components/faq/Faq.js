@@ -2,8 +2,9 @@ import React from 'react';
 import FaqItem from './FaqItem';
 import Title from '@/elements/Title';
 
-const faqs = [1, 2, 3, 4, 5];
-const Faq = () => {
+const Faq = ({ settings }) => {
+  const faqs = settings?.faqs || [];
+
   return (
     <div className="mx-auto max-w-3xl md:my-24 my-16">
       <div className="text-center mb-8">
@@ -11,8 +12,8 @@ const Faq = () => {
       </div>
       <div className="flow-root">
         <div className=" divide-y divide-gray-100">
-          {faqs.map((item) => (
-            <FaqItem key={item} />
+          {faqs.map((faq) => (
+            <FaqItem key={faq._key} faq={faq} />
           ))}
         </div>
       </div>

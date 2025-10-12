@@ -1,12 +1,12 @@
 import React from 'react';
 
-const FaqItem = () => {
+const FaqItem = ({ faq }) => {
+  if (!faq) return null;
+
   return (
     <details className="group py-6 [&_summary::-webkit-details-marker]:hidden">
       <summary className="flex cursor-pointer items-center justify-between gap-1.5 text-gray-900">
-        <h2 className="text-lg font-medium text-brand">
-          Lorem ipsum dolor sit amet consectetur adipisicing?
-        </h2>
+        <h2 className="text-lg font-medium text-brand">{faq.question}</h2>
 
         <span className="relative size-5 shrink-0 text-primary">
           <svg
@@ -42,10 +42,7 @@ const FaqItem = () => {
       </summary>
 
       <p className="mt-4 leading-relaxed text-brand text-sm font-light">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab hic
-        veritatis molestias culpa in, recusandae laboriosam neque aliquid libero
-        nesciunt voluptate dicta quo officiis explicabo consequuntur distinctio
-        corporis earum similique!
+        {faq.answer}
       </p>
     </details>
   );

@@ -10,17 +10,23 @@ const Services = async () => {
     return null;
   }
   return (
-    <div className="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-3xl text-center">
-        <Title className="mb-6">Our Services</Title>
-      </div>
+    <section className="py-20 bg-white">
+      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center mb-16">
+          <Title className="mb-4">Our Services</Title>
+          <p className="text-lg text-gray-600">
+            We provide comprehensive car rental and transportation solutions
+            tailored to your needs
+          </p>
+        </div>
 
-      <div className="grid container  mx-auto lg:my-16 my-10 lg:grid-cols-3 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-7">
-        {services.map((item) => (
-          <ServiceItem key={item._id} item={item} />
-        ))}
+        <div className="grid lg:grid-cols-3 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
+          {services.map((item) => (
+            <ServiceItem key={item._id} item={item} />
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -15,18 +15,29 @@ const BlogsHome = async () => {
   }
 
   return (
-    <div className="container mx-auto py-20 bg-light md:px-8 px-4 rounded-xl mb-16">
-      <div className="flex items-center justify-between mb-10">
-        <Title className="mb-6">Latest Blog Posts</Title>
-        <Link href="/blogs" className="flex items-center font-light text-brand">
-          View All <ArrowUp />
-        </Link>
-      </div>
+    <div className="bg-light py-10">
+      <div className="max-w-7xl mx-auto ">
+        <div className="flex items-center justify-between mb-10">
+          <div>
+            <Title className="mb-2">Latest Blog Posts</Title>
+            <p className="text-gray-600">
+              Stay updated with our latest news and insights
+            </p>
+          </div>
+          <Link
+            href="/blogs"
+            className="flex items-center font-medium text-blue-600 hover:text-blue-800 transition-colors group"
+          >
+            View All
+            <ArrowUp className="ml-2 transform group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
 
-      <div className="grid lg:grid-cols-3 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-7">
-        {blogs.map((blog) => (
-          <BlogItem key={blog._id} blog={blog} />
-        ))}
+        <div className="grid lg:grid-cols-3 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
+          {blogs.map((blog) => (
+            <BlogItem key={blog._id} blog={blog} />
+          ))}
+        </div>
       </div>
     </div>
   );

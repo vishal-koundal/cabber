@@ -2,22 +2,23 @@ import Button from '@/elements/Button';
 import Link from 'next/link';
 import React from 'react';
 import Logo from './Logo';
+import config from '@/utils/config';
 
 const navLinks = [
   { id: '1', name: 'Home', href: '/' },
   { id: '2', name: 'About Us', href: '/about' },
   { id: '3', name: 'Book a Car', href: '/cars' },
-  { id: '4', name: 'Blog', href: '/blog' },
+  { id: '4', name: 'Blog', href: '/blogs' },
   { id: '5', name: 'Contact', href: '/contact' },
 ];
-const Header = () => {
+const Header = ({ settings }) => {
   return (
     <div className="bg-brand">
       <div className="container mx-auto">
         <nav className="relative px-4 py-4 flex justify-between items-center bg-brand">
-          <a className="text-3xl font-bold leading-none" href="#">
+          <Link className="text-3xl font-bold leading-none" href="/">
             <Logo />
-          </a>
+          </Link>
           <div className="lg:hidden">
             <button className="navbar-burger flex items-center text-blue-600 p-3">
               <svg
