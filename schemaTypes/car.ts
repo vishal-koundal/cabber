@@ -53,6 +53,18 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'availableServices',
+      title: 'Services',
+      type: 'array', // Th
+      of: [
+        {
+          type: 'reference', // Each item in the array is a reference
+          to: [{type: 'category'}], // Reference to the 'category' document type
+        },
+      ],
+    }),
+
+    defineField({
       name: 'category',
       title: 'Category',
       type: 'string',
@@ -64,6 +76,12 @@ export default defineType({
         layout: 'radio',
       },
       validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'isFeatured',
+      title: 'Featured Car',
+      type: 'boolean',
+      initialValue: false,
     }),
     defineField({
       name: 'featureImage',

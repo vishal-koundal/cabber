@@ -37,6 +37,12 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'isFeatured',
+      title: 'Featured Blog Post',
+      type: 'boolean',
+      initialValue: false,
+    }),
+    defineField({
       name: 'image',
       title: 'Featured Image',
       type: 'image',
