@@ -12,6 +12,7 @@
   "dependencies": {
     "@react-google-maps/api": "^2.20.5",
     "@sanity/image-url": "^1.2.0",
+    "axios": "^1.12.2",
     "formik": "^2.4.6",
     "next": "14.2.5",
     "next-sanity": "^9.12.3",

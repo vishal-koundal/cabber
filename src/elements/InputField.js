@@ -1,6 +1,12 @@
-import React from 'react'
+import React from 'react';
 
-const InputField = ({ label, error = '', ...field }) => {
+const InputField = ({
+  inputType = 'input',
+  label,
+  error = '',
+  options = [],
+  ...field
+}) => {
   return (
     <div>
       <div>
@@ -11,16 +17,31 @@ const InputField = ({ label, error = '', ...field }) => {
           {label}
         </label>
         <div className="mt-2">
-          <input
-            {...field}
-            className="px-4 block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 outline-none focus:ring-inset focus:ring-brand sm:text-sm sm:leading-6"
-          />
+          {inputType === 'select' && (
+            <select
+              {...field}
+              className="px-4 block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 outline-none focus:ring-inset focus:ring-brand sm:text-sm sm:leading-6"
+            >
+              <option value={''}>Select</option>
+              {options?.map((item) => (
+                <option key={item.value} value={item.value}>
+                  {item.label}
+                </option>
+              ))}
+            </select>
+          )}
+          {inputType === 'input' && (
+            <input
+              {...field}
+              className="px-4 block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 outline-none focus:ring-inset focus:ring-brand sm:text-sm sm:leading-6"
+            />
+          )}
         </div>
       </div>
       {error?.length > 0 && (
         <span className="mt-1 text-red-600 text-sm italic">{error}</span>
       )}
     </div>
-  )
-}
-export default InputField
+  );
+};
+export default InputField;

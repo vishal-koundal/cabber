@@ -56,6 +56,12 @@ const RegisterForm = (props) => {
           label="Subject"
           name="subject"
           type="text"
+          inputType="select"
+          options={[
+            { value: 'cabBooking', label: 'Cab Booking' },
+            { value: 'selfDrive', label: 'Self Drive' },
+            { value: 'other', label: 'Other' },
+          ]}
           value={values?.subject}
           onChange={handleChange}
           onBlur={handleBlur}
@@ -108,9 +114,11 @@ export default withFormik({
     message: Yup.string().required('Message is required!'),
   }),
 
-  handleSubmit: (values, { setSubmitting, props }) => {
+  handleSubmit: (values, { setSubmitting, resetForm, props }) => {
+    setSubmitting(true);
     props.onSubmit(values);
     setSubmitting(false);
+    resetForm();
   },
   displayName: formId, // helps with React DevTools
 })(RegisterForm);
