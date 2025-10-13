@@ -1,9 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import { sendTelegram } from '@/lib/telegram';
 import { formatBookingMessage } from '@/utils/telegramFormatter';
 import Button from '@/elements/Button';
+import { sendTelegram } from '../../../lib/telegram';
 
 const TelegramTest = () => {
   const [isLoading, setIsLoading] = useState(false);

@@ -2,7 +2,7 @@ import {
   createBooking,
   updateBookingTelegramStatus,
 } from '../../../../lib/sanity';
-import { sendTelegram } from '@/lib/telegram';
+import { sendTelegram } from '../../../../lib/telegram';
 import { formatBookingMessage } from '@/utils/telegramFormatter';
 
 export async function POST(request) {
