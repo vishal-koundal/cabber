@@ -1,36 +1,50 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Form from './Form';
 import Title from '@/elements/Title';
-import { sendTelegram } from '../../../lib/telegram';
-import config from '@/utils/config';
 import Swal from 'sweetalert2';
 
 const index = () => {
-  const handleSubmit = async (values) => {
-    console.log('values', values);
-    try {
-      await sendTelegram(`
-        *New Contact Form Submission at ${config.siteName}*
-- Name: ${values.name}
-- Email: ${values.email}
-- Phone: ${values.telephone}
-- Message: ${values.message}
-      `);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-      Swal.fire({
-        title: 'Success!',
-        text: 'Details submitted successfully.\n We will contact you soon. Thanks!',
-        icon: 'success',
+  const handleSubmit = async (values) => {
+    setIsSubmitting(true);
+
+    try {
+      // Save contact to Sanity and send Telegram notification via API
+      const response = await fetch('/api/contacts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
       });
+
+      const result = await response.json();
+
+      if (result.success) {
+        Swal.fire({
+          title: 'Success!',
+          text: `Details submitted successfully.\nWe will contact you soon. Thanks!`,
+          icon: 'success',
+          showConfirmButton: true,
+          confirmButtonText: 'OK',
+        });
+      } else {
+        throw new Error(result.error || 'Failed to submit contact form');
+      }
     } catch (error) {
+      console.error('Contact submission failed:', error);
       Swal.fire({
         title: 'Something went wrong!',
-        text: 'Please try again later!',
+        text: `Please try again later!\nError: ${error.message}`,
         icon: 'error',
+        showConfirmButton: true,
+        confirmButtonText: 'OK',
       });
-      console.error('Telegram notification failed:', error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
   return (
@@ -38,7 +52,7 @@ const index = () => {
       <div className="text-center mb-8">
         <Title>Leave us your info</Title>
       </div>
-      <Form onSubmit={handleSubmit} />
+      <Form onSubmit={handleSubmit} isSubmittingForm={isSubmitting} />
     </div>
   );
 };

@@ -214,16 +214,14 @@ function CarDetails({ car }) {
                   <button
                     type="button"
                     className={`w-full py-4 px-6 rounded-lg font-semibold text-white transition-all duration-200 ${
-                      car.availability
+                      car.availability || !car.availability
                         ? 'bg-blue-600 hover:bg-blue-700 hover:shadow-lg transform hover:-translate-y-0.5'
                         : 'bg-gray-400 cursor-not-allowed'
                     }`}
-                    disabled={!car.availability}
+                    // disabled={!car.availability}
                     onClick={bookCar}
                   >
-                    {car.availability
-                      ? 'Book This Car'
-                      : 'Currently Unavailable'}
+                    Book Now
                   </button>
                 </Link>
               </div>

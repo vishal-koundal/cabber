@@ -5,6 +5,10 @@ import SuccessPopup from '@/components/create-booking/SuccessPopup';
 
 import Title from '@/elements/Title';
 import React, { useState } from 'react';
+import {
+  formatBookingMessage,
+  formatBookingConfirmationMessage,
+} from '@/utils/telegramFormatter';
 
 const page = () => {
   const [step, setStep] = useState(1);
@@ -14,6 +18,17 @@ const page = () => {
     tripDetails: {},
   });
   const [showSuccess, setShowSuccess] = useState(false);
+  const [telegramStatus, setTelegramStatus] = useState({
+    isSending: false,
+    isSent: false,
+    error: null,
+  });
+  const [sanityStatus, setSanityStatus] = useState({
+    isSaving: false,
+    isSaved: false,
+    error: null,
+    bookingId: null,
+  });
 
   const handleStepChange = (newStep) => {
     setStep(newStep);
@@ -29,8 +44,76 @@ const page = () => {
     setStep(3);
   };
 
-  const handleTripDetailsSubmit = (tripDetails) => {
-    setBookingData((prev) => ({ ...prev, tripDetails }));
+  const handleTripDetailsSubmit = async (tripDetails) => {
+    const updatedBookingData = { ...bookingData, tripDetails };
+    setBookingData(updatedBookingData);
+
+    // Set loading states
+    setTelegramStatus({ isSending: true, isSent: false, error: null });
+    setSanityStatus({
+      isSaving: true,
+      isSaved: false,
+      error: null,
+      bookingId: null,
+    });
+
+    try {
+      // Save booking to Sanity and send Telegram notification via API
+      const response = await fetch('/api/bookings', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedBookingData),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSanityStatus({
+          isSaving: false,
+          isSaved: true,
+          error: null,
+          bookingId: result.bookingId,
+        });
+
+        if (result.telegram.success) {
+          setTelegramStatus({ isSending: false, isSent: true, error: null });
+        } else {
+          setTelegramStatus({
+            isSending: false,
+            isSent: false,
+            error: result.telegram.error,
+          });
+        }
+      } else {
+        setSanityStatus({
+          isSaving: false,
+          isSaved: false,
+          error: result.error,
+          bookingId: null,
+        });
+        setTelegramStatus({
+          isSending: false,
+          isSent: false,
+          error: 'Failed to save booking',
+        });
+      }
+    } catch (error) {
+      console.error('Booking submission failed:', error);
+      setSanityStatus({
+        isSaving: false,
+        isSaved: false,
+        error: error.message,
+        bookingId: null,
+      });
+      setTelegramStatus({
+        isSending: false,
+        isSent: false,
+        error: 'Network error',
+      });
+    }
+
     setShowSuccess(true);
   };
 
@@ -39,6 +122,13 @@ const page = () => {
     // Reset the form or redirect
     setStep(1);
     setBookingData({ bookingType: '', customerDetails: {}, tripDetails: {} });
+    setTelegramStatus({ isSending: false, isSent: false, error: null });
+    setSanityStatus({
+      isSaving: false,
+      isSaved: false,
+      error: null,
+      bookingId: null,
+    });
   };
 
   return (
@@ -87,12 +177,19 @@ const page = () => {
               onBack={() => setStep(1)}
               onSubmit={handleCustomerDetailsSubmit}
               onTripDetailsSubmit={handleTripDetailsSubmit}
+              isSubmitting={telegramStatus.isSending}
             />
           )}
         </div>
       </div>
 
-      {showSuccess && <SuccessPopup onClose={handleSuccessClose} />}
+      {showSuccess && (
+        <SuccessPopup
+          onClose={handleSuccessClose}
+          telegramStatus={telegramStatus}
+          sanityStatus={sanityStatus}
+        />
+      )}
     </div>
   );
 };
