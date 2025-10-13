@@ -37,25 +37,22 @@ export async function POST(request) {
     try {
       const telegramMessage = `
         *New Contact Form Submission at ${config.siteName}*
+👤 *Contact Details:*
+• Name: ${contactData.name}
+• Email: ${contactData.email}
+• Phone: ${contactData.telephone}
+• Subject: ${contactData.subject || 'Not specified'}
 
-        👤 *Contact Details:*
-        • Name: ${contactData.name}
-        • Email: ${contactData.email}
-        • Phone: ${contactData.telephone}
-        • Subject: ${contactData.subject || 'Not specified'}
+💬 *Message:* ${contactData.message}
 
-        💬 *Message:*
-        ${contactData.message}
-
-        📋 *Contact ID:* ${sanityResult.contactId}
-        ⏰ *Time:* ${new Date().toLocaleString('en-IN', {
-          timeZone: 'Asia/Kolkata',
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-          hour: '2-digit',
-          minute: '2-digit',
-        })}
+⏰ *Time:* ${new Date().toLocaleString('en-IN', {
+        timeZone: 'Asia/Kolkata',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+      })}
       `;
 
       const telegramResponse = await sendTelegram(telegramMessage);
