@@ -32,7 +32,7 @@ Create a `.env.local` file in your project root with:
 ```env
 # Sanity CMS Configuration
 NEXT_PUBLIC_SANITY_PROJECT_ID=your_sanity_project_id
-NEXT_PUBLIC_SANITY_API_TOKEN=your_sanity_api_token_here
+SANITY_API_TOKEN=your_sanity_api_token_here
 
 # Telegram Bot Configuration
 NEXT_PUBLIC_TELEGRAM_TOKEN=your_telegram_bot_token_here
@@ -79,7 +79,7 @@ The Telegram messages include:
 
 ### Sanity Issues
 
-- **Write permission denied**: Check that your NEXT_PUBLIC_SANITY_API_TOKEN has Editor permissions
+- **Write permission denied**: Check that your SANITY_API_TOKEN has Editor permissions
 - **Project not found**: Verify NEXT_PUBLIC_SANITY_PROJECT_ID is correct
 - **Dataset errors**: Ensure your dataset is named 'production'
 - **Schema errors**: Make sure your Sanity schemas include 'booking' and 'contact' types
