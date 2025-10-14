@@ -134,7 +134,7 @@ function CarDetails({ car }) {
                 <div>
                   <span className="text-sm text-gray-500">Starting from</span>
                   <p className="text-3xl font-bold text-blue-600">
-                    {config.currency} {car.basePrice || car.price || 'N/A'}
+                    {config.currency} {car.basePrice || car.price || 'N/A'}/
                   </p>
                 </div>
                 <div

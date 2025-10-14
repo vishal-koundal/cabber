@@ -1,16 +1,17 @@
-import config from '@/utils/config'
-import React from 'react'
+import config from '@/utils/config';
+import React from 'react';
+import Image from 'next/image';
 
 const Logo = ({ dark }) => {
   return (
-    <h3
-      className={
-        dark ? 'text-black text-4xl font-bold' : 'text-white font-bold'
-      }
-    >
-      {config.siteName}
-    </h3>
-  )
-}
+    <Image
+      src="/logo.png"
+      alt={config.siteName}
+      height={30}
+      width={35}
+      className="object-contain w-24 h-20"
+    />
+  );
+};
 
-export default Logo
+export default Logo;

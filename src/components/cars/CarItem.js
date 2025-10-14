@@ -19,6 +19,9 @@ const CarItem = ({ car }) => {
             <span className="text-lg font-semibold text-green-600">
               {config.currency}
               {car.basePrice}
+              <span className="text-sm font-light text-grayDark">
+                /Base Price
+              </span>
             </span>
             <span
               className={`px-2 py-1 rounded text-xs ${

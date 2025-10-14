@@ -54,13 +54,14 @@ const RegisterForm = (props) => {
           error={errors.telephone && touched.telephone ? errors.telephone : ''}
         />
         <InputField
-          label="Subject"
+          label="Service"
           name="subject"
           type="text"
           inputType="select"
           options={[
             { value: 'cabBooking', label: 'Cab Booking' },
             { value: 'selfDrive', label: 'Self Drive' },
+            { value: 'wedding', label: 'Wedding' },
             { value: 'other', label: 'Other' },
           ]}
           value={values?.subject}
@@ -136,7 +137,7 @@ export default withFormik({
       .required('Email is required!'),
     telephone: Yup.string().required('Mobile number is required!'),
     name: Yup.string().required('Name is required!'),
-    subject: Yup.string().required('Subject is required!'),
+    subject: Yup.string().required('Please select service is required!'),
     message: Yup.string().required('Message is required!'),
   }),
 
