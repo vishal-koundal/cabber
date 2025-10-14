@@ -8,7 +8,7 @@ const InputField = ({
   ...field
 }) => {
   return (
-    <div>
+    <div className="w-full">
       <div>
         <label
           htmlFor={field?.name}
@@ -20,7 +20,7 @@ const InputField = ({
           {inputType === 'select' && (
             <select
               {...field}
-              className="px-4 block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 outline-none focus:ring-inset focus:ring-brand sm:text-sm sm:leading-6"
+              className="px-3 sm:px-4 block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 outline-none focus:ring-inset focus:ring-brand text-sm sm:text-sm sm:leading-6"
             >
               <option value={''}>Select</option>
               {options?.map((item) => (
@@ -33,13 +33,15 @@ const InputField = ({
           {inputType === 'input' && (
             <input
               {...field}
-              className="px-4 block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 outline-none focus:ring-inset focus:ring-brand sm:text-sm sm:leading-6"
+              className="px-3 sm:px-4 block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 outline-none focus:ring-inset focus:ring-brand text-sm sm:text-sm sm:leading-6"
             />
           )}
         </div>
       </div>
       {error?.length > 0 && (
-        <span className="mt-1 text-red-600 text-sm italic">{error}</span>
+        <span className="mt-1 text-red-600 text-xs sm:text-sm italic">
+          {error}
+        </span>
       )}
     </div>
   );

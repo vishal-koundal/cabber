@@ -20,15 +20,15 @@ const Button = ({
   };
 
   const sizeClasses = {
-    medium: 'px-5 py-1.5 text-sm',
-    large: 'px-6 py-2.5 text-base',
+    medium: 'px-4 sm:px-5 py-1.5 text-sm',
+    large: 'px-5 sm:px-6 py-2 sm:py-2.5 text-sm sm:text-base',
   };
 
   const baseClasses = `${fullWidth ? 'w-full' : 'w-auto'} ${
     sizeClasses[size]
   } ${typeClasses[variant]} ${
     disabled ? 'opacity-70 cursor-not-allowed' : 'opacity-100'
-  } ${otherCss} rounded-lg transition duration-200 font-medium shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2`;
+  } ${otherCss} rounded-lg transition duration-200 font-medium shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 inline-flex items-center justify-center`;
 
   if (href) {
     return (

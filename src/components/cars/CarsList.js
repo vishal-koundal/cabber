@@ -6,10 +6,12 @@ const CarsList = async () => {
   const cars = await getAllCars();
 
   return (
-    <div className="grid container mx-auto lg:my-16 my-10 lg:grid-cols-3 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-7">
-      {cars.map((car) => (
-        <CarItem key={car._id} car={car} />
-      ))}
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-7 my-8 sm:my-12 lg:my-16">
+        {cars.map((car) => (
+          <CarItem key={car._id} car={car} />
+        ))}
+      </div>
     </div>
   );
 };

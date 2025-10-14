@@ -24,21 +24,23 @@ const ReviewItem = ({ review }) => {
   if (!review) return null;
 
   return (
-    <div className="mb-8 sm:break-inside-avoid">
-      <blockquote className="rounded-lg bg-gray-50 p-6 shadow-sm sm:p-8">
+    <div className="mb-6 sm:mb-8">
+      <blockquote className="rounded-lg bg-gray-50 p-4 sm:p-6 lg:p-8 shadow-sm hover:shadow-md transition-shadow">
         <div className="flex items-center gap-4">
-          <div>
-            <div className="flex justify-center gap-0.5 text-green-500">
+          <div className="w-full">
+            <div className="flex justify-center sm:justify-start gap-0.5 text-green-500 mb-2">
               {renderStars(review.rating)}
             </div>
 
-            <p className="mt-0.5 text-lg font-medium text-gray-900">
+            <p className="mt-0.5 text-base sm:text-lg font-medium text-gray-900 text-center sm:text-left">
               {review.name}
             </p>
           </div>
         </div>
 
-        <p className="mt-4 text-gray-700">{review.review}</p>
+        <p className="mt-4 text-sm sm:text-base text-gray-700 leading-relaxed">
+          {review.review}
+        </p>
       </blockquote>
     </div>
   );

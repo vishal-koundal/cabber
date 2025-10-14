@@ -8,11 +8,11 @@ const Reviews = ({ settings }) => {
   return (
     <section className="bg-white">
       <div className="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-        <div className="text-center mb-8">
+        <div className="text-center mb-8 sm:mb-12">
           <Title>Read trusted reviews from our customers</Title>
         </div>
 
-        <div className="mt-8 [column-fill:_balance] sm:columns-2 sm:gap-6 lg:columns-3 lg:gap-8">
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {reviews.map((review) => (
             <ReviewItem key={review._key} review={review} />
           ))}

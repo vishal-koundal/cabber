@@ -27,17 +27,17 @@ const Hero = ({ settings }) => {
       }}
     >
       <div className="absolute inset-0 bg-[#00000020]"></div>
-      <div className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8 justify-between">
-        <div className="max-w-xl">
-          <h1 className="text-3xl font-extrabold text-white sm:text-5xl">
+      <div className="relative mx-auto max-w-screen-xl px-4 py-16 sm:py-24 lg:py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8 justify-between">
+        <div className="max-w-xl text-center lg:text-left">
+          <h1 className="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">
             {heroData.title || settings?.name}
           </h1>
 
-          <p className="mt-4 max-w-lg text-white sm:text-lg/relaxed">
+          <p className="mt-4 max-w-lg text-white text-base sm:text-lg leading-relaxed mx-auto lg:mx-0">
             {heroData.description || config.description}
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-4 text-center">
+          <div className="mt-8 flex flex-wrap gap-4 justify-center lg:justify-start">
             <Button
               href={heroData.redirect || '/contact'}
               variant="white"

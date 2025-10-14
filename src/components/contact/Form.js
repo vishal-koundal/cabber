@@ -23,9 +23,9 @@ const RegisterForm = (props) => {
     <form
       id={formId}
       onSubmit={handleSubmit}
-      className="space-y-5 md:w-10/12 mx-auto"
+      className="space-y-5 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
     >
-      <div className="md:grid grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
         <InputField
           label="Name"
           name="name"
