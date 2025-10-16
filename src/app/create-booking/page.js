@@ -4,14 +4,18 @@ import CustomerDetailsForm from '@/components/create-booking/CustomerDetailsForm
 import SuccessPopup from '@/components/create-booking/SuccessPopup';
 
 import Title from '@/elements/Title';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   formatBookingMessage,
   formatBookingConfirmationMessage,
 } from '@/utils/telegramFormatter';
+import { useSearchParams } from 'next/navigation';
+import { getCarBySlug } from '../../../lib/sanity';
 
 const page = () => {
   const [step, setStep] = useState(1);
+  const searchParams = useSearchParams();
+  const [selectedCar, setSelectedCar] = useState(null);
   const [bookingData, setBookingData] = useState({
     bookingType: '', // 'self-drive' or 'cab'
     customerDetails: {},
@@ -36,7 +40,6 @@ const page = () => {
 
   const handleBookingTypeSelect = (type) => {
     setBookingData((prev) => ({ ...prev, bookingType: type }));
-    setStep(2);
   };
 
   const handleCustomerDetailsSubmit = (details) => {
@@ -45,7 +48,30 @@ const page = () => {
   };
 
   const handleTripDetailsSubmit = async (tripDetails) => {
-    const updatedBookingData = { ...bookingData, tripDetails };
+    const updatedBookingData = {
+      ...bookingData,
+      tripDetails,
+      carDetails: selectedCar
+        ? {
+            name: selectedCar.name || '',
+            seats: selectedCar.seats || '',
+            fuelType: selectedCar.fuelType || '',
+            category:
+              (selectedCar.category &&
+                (selectedCar.category.title || selectedCar.category)) ||
+              '',
+          }
+        : undefined,
+      pricing: selectedCar
+        ? {
+            baseFare: selectedCar.basePrice || 0,
+            deliveryPickup: 100,
+            insuranceGst: 80,
+            total: (selectedCar.basePrice || 0) + 100 + 80,
+            currency: '₹',
+          }
+        : undefined,
+    };
     setBookingData(updatedBookingData);
 
     // Set loading states
@@ -131,12 +157,25 @@ const page = () => {
     });
   };
 
+  useEffect(() => {
+    const slugOrId = searchParams.get('car');
+    if (!slugOrId) return;
+    (async () => {
+      try {
+        const car = await getCarBySlug(slugOrId);
+        if (car) setSelectedCar(car);
+      } catch (e) {
+        console.warn('Failed to load selected car:', e);
+      }
+    })();
+  }, [searchParams]);
+
   return (
     <div className="container mx-auto md:px-6 px-4 md:py-16 py-10 min-h-screen">
       <div className="text-center mb-4">
         <Title>Booking Details</Title>
       </div>
-      <div className="mx-auto max-w-screen-md">
+      <div className="mx-auto max-w-4xl">
         {/* Progress Indicator */}
         <div className="mb-8">
           <div className="flex items-center justify-center space-x-4">
@@ -169,6 +208,8 @@ const page = () => {
             <BookingDetails
               onContinue={() => setStep(2)}
               onBookingTypeSelect={handleBookingTypeSelect}
+              bookingType={bookingData.bookingType}
+              car={selectedCar}
             />
           )}
           {step === 2 && (

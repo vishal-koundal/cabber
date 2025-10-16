@@ -210,7 +210,12 @@ function CarDetails({ car }) {
 
               {/* Book Now Button */}
               <div className="pt-4">
-                <Link href="/create-booking">
+                <Link
+                  href={{
+                    pathname: '/create-booking',
+                    query: { car: car.slug?.current || car._id },
+                  }}
+                >
                   <button
                     type="button"
                     className={`w-full py-4 px-6 rounded-lg font-semibold text-white transition-all duration-200 ${

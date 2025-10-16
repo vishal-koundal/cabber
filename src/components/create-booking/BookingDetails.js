@@ -2,22 +2,56 @@ import Button from '@/elements/Button';
 import config from '@/utils/config';
 import React from 'react';
 
-const BookingDetails = ({ onContinue, onBookingTypeSelect }) => {
+const BookingDetails = ({
+  onContinue,
+  onBookingTypeSelect,
+  bookingType,
+  car,
+}) => {
   return (
     <div className="space-y-6">
       {/* Booking Type Selection */}
       <div className="border rounded-lg py-6">
         <div className="px-5 mb-6">
-          <h3 className="text-lg font-semibold mb-4">Select Booking Type</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <h3 className="text-lg font-semibold mb-1">Select Booking Type</h3>
+          <p className="text-sm text-gray-500 mb-4">
+            Choose how you want to book.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <button
               onClick={() => onBookingTypeSelect('self-drive')}
-              className="p-4 border-2 border-gray-200 rounded-lg hover:border-brand hover:bg-brand/5 transition-colors text-left"
+              aria-pressed={bookingType === 'self-drive'}
+              className={`relative p-5 border rounded-xl transition-all text-left bg-white shadow-sm hover:shadow-md ${
+                bookingType === 'self-drive'
+                  ? 'border-brand ring-2 ring-brand/30'
+                  : 'border-gray-200 hover:border-brand/60'
+              }`}
             >
-              <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-brand/10 rounded-lg flex items-center justify-center">
+              {bookingType === 'self-drive' && (
+                <span className="absolute top-3 right-3 inline-flex items-center justify-center h-6 w-6 rounded-full bg-brand text-white">
                   <svg
-                    className="w-6 h-6 text-brand"
+                    className="h-4 w-4"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="3"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </span>
+              )}
+              <div className="flex items-center space-x-3">
+                <div
+                  className={`w-10 h-10 rounded-lg flex items-center justify-center ${
+                    bookingType === 'self-drive' ? 'bg-brand/15' : 'bg-gray-50'
+                  }`}
+                >
+                  <svg
+                    className="w-5 h-5 text-brand"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -32,8 +66,8 @@ const BookingDetails = ({ onContinue, onBookingTypeSelect }) => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900">Self Drive</h4>
-                  <p className="text-sm text-gray-600">
-                    Rent a car and drive yourself
+                  <p className="text-xs text-gray-600">
+                    Rent a car & drive yourself
                   </p>
                 </div>
               </div>
@@ -41,12 +75,38 @@ const BookingDetails = ({ onContinue, onBookingTypeSelect }) => {
 
             <button
               onClick={() => onBookingTypeSelect('cab')}
-              className="p-4 border-2 border-gray-200 rounded-lg hover:border-brand hover:bg-brand/5 transition-colors text-left"
+              aria-pressed={bookingType === 'cab'}
+              className={`relative p-5 border rounded-xl transition-all text-left bg-white shadow-sm hover:shadow-md ${
+                bookingType === 'cab'
+                  ? 'border-brand ring-2 ring-brand/30'
+                  : 'border-gray-2 00 hover:border-brand/60'
+              }`}
             >
-              <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-brand/10 rounded-lg flex items-center justify-center">
+              {bookingType === 'cab' && (
+                <span className="absolute top-3 right-3 inline-flex items-center justify-center h-6 w-6 rounded-full bg-brand text-white">
                   <svg
-                    className="w-6 h-6 text-brand"
+                    className="h-4 w-4"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="3"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </span>
+              )}
+              <div className="flex items-center space-x-3">
+                <div
+                  className={`w-10 h-10 rounded-lg flex items-center justify-center ${
+                    bookingType === 'cab' ? 'bg-brand/15' : 'bg-gray-50'
+                  }`}
+                >
+                  <svg
+                    className="w-5 h-5 text-brand"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -67,7 +127,7 @@ const BookingDetails = ({ onContinue, onBookingTypeSelect }) => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900">Cab Service</h4>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-xs text-gray-600">
                     Book a cab with driver
                   </p>
                 </div>
@@ -75,12 +135,38 @@ const BookingDetails = ({ onContinue, onBookingTypeSelect }) => {
             </button>
             <button
               onClick={() => onBookingTypeSelect('wedding')}
-              className="p-4 border-2 border-gray-200 rounded-lg hover:border-brand hover:bg-brand/5 transition-colors text-left"
+              aria-pressed={bookingType === 'wedding'}
+              className={`relative p-5 border rounded-xl transition-all text-left bg-white shadow-sm hover:shadow-md ${
+                bookingType === 'wedding'
+                  ? 'border-brand ring-2 ring-brand/30'
+                  : 'border-gray-200 hover:border-brand/60'
+              }`}
             >
-              <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-brand/10 rounded-lg flex items-center justify-center">
+              {bookingType === 'wedding' && (
+                <span className="absolute top-3 right-3 inline-flex items-center justify-center h-6 w-6 rounded-full bg-brand text-white">
                   <svg
-                    className="w-6 h-6 text-brand"
+                    className="h-4 w-4"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="3"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </span>
+              )}
+              <div className="flex items-center space-x-3">
+                <div
+                  className={`w-10 h-10 rounded-lg flex items-center justify-center ${
+                    bookingType === 'wedding' ? 'bg-brand/15' : 'bg-gray-50'
+                  }`}
+                >
+                  <svg
+                    className="w-5 h-5 text-brand"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -101,7 +187,7 @@ const BookingDetails = ({ onContinue, onBookingTypeSelect }) => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900">Wedding Car</h4>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-xs text-gray-600">
                     Book a car for wedding
                   </p>
                 </div>
@@ -118,19 +204,23 @@ const BookingDetails = ({ onContinue, onBookingTypeSelect }) => {
           <div className="space-y-3 text-xs ">
             <div className="flex items-center justify-between ">
               <span>Name</span>
-              <span>BMW 7 Series Sedan</span>
+              <span>{car?.name || '—'}</span>
             </div>
             <div className="flex items-center justify-between ">
               <span>Seats</span>
-              <span>4</span>
+              <span>{car?.seats ?? '—'}</span>
             </div>
             <div className="flex items-center justify-between ">
               <span>Fuel</span>
-              <span>Petrol</span>
+              <span>
+                {car?.fuelType ? String(car.fuelType).toUpperCase() : '—'}
+              </span>
             </div>
             <div className="flex items-center justify-between ">
               <span>Category</span>
-              <span>Luxury</span>
+              <span>
+                {car?.category ? car.category.title || car.category : '—'}
+              </span>
             </div>
           </div>
         </div>
@@ -139,7 +229,9 @@ const BookingDetails = ({ onContinue, onBookingTypeSelect }) => {
           <div className="space-y-3 text-xs ">
             <div className="flex items-center justify-between ">
               <span>Base fare</span>
-              <span>{config.currency} 450</span>
+              <span>
+                {config.currency} {car?.basePrice ?? 0}
+              </span>
             </div>
             <div className="flex items-center justify-between ">
               <span>Doorstep delivery & pickup</span>
@@ -150,8 +242,10 @@ const BookingDetails = ({ onContinue, onBookingTypeSelect }) => {
               <span>{config.currency} 80</span>
             </div>
             <div className="flex items-center justify-between font-bold">
-              <span className="">Total</span>
-              <span>{config.currency} 630</span>
+              <span className="">Total Base fare</span>
+              <span>
+                {config.currency} {(car?.basePrice || 0) + 100 + 80}
+              </span>
             </div>
           </div>
         </div>
@@ -165,6 +259,17 @@ const BookingDetails = ({ onContinue, onBookingTypeSelect }) => {
             <span>To be paid by you</span>
           </div>
         </div>
+      </div>
+
+      {/* Continue Button */}
+      <div className="flex justify-end">
+        <Button
+          onClick={onContinue}
+          disabled={!bookingType}
+          className={!bookingType ? 'opacity-70 cursor-not-allowed' : ''}
+        >
+          Continue
+        </Button>
       </div>
     </div>
   );
