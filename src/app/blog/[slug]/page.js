@@ -112,7 +112,7 @@ export default async function BlogPostPage({ params }) {
   }
 
   return (
-    <main className="container mx-auto min-h-screen max-w-4xl p-8">
+    <main className="container mx-auto min-h-screen max-w-4xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
       {/* Back to blogs link */}
       <div className="mb-6">
         <Link
@@ -164,26 +164,26 @@ export default async function BlogPostPage({ params }) {
         )}
 
         {/* Blog Header */}
-        <header className="mb-8">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center space-x-4 text-sm text-gray-600">
+        <header className="mb-6 sm:mb-8">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-2">
+            <div className="flex items-center space-x-2 sm:space-x-4 text-xs sm:text-sm text-gray-600">
               <span>By {blog.author}</span>
               <span>•</span>
               <span>{new Date(blog.publishedAt).toLocaleDateString()}</span>
             </div>
             {blog.isFeatured && (
-              <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">
+              <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
                 Featured
               </span>
             )}
           </div>
 
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
             {blog.title}
           </h1>
 
           {blog.excerpt && (
-            <p className="text-xl text-gray-600 leading-relaxed">
+            <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
               {blog.excerpt}
             </p>
           )}

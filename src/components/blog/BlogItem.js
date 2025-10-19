@@ -64,7 +64,7 @@ const BlogItem = ({ blog }) => {
           )}
           <Link
             href={`/blog/${blog.slug?.current || blog._id}`}
-            className="border border-brand h-10 w-10 sm:h-12 sm:w-12 rounded-full flex items-center justify-center mt-4 sm:mt-5 hover:bg-brand hover:text-white transition-colors"
+            className="border bg-white border-brand h-10 w-10 sm:h-12 sm:w-12 rounded-full flex items-center justify-center mt-4 sm:mt-5 hover:bg-brand hover:text-white transition-colors"
           >
             <ArrowUp />
           </Link>

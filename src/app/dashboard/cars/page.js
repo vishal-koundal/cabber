@@ -11,14 +11,14 @@ const options = [
 ];
 const page = () => {
   return (
-    <div className="container mx-auto md:px-6 px-4 py-10 min-h-screen">
-      <div className="flex justify-between mb-4">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10 min-h-screen">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 sm:mb-6 gap-4">
         <Title>Products</Title>
         <Button href="/dashboard/add-car" size="large">
           Add Car
         </Button>
       </div>
-      <div className="flex gap-4 justify-end">
+      <div className="flex flex-col sm:flex-row gap-4 sm:justify-end">
         <InputField placeholder="Search.." />
         <SelectInput options={options} />
       </div>

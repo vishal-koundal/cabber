@@ -27,7 +27,7 @@ const Footer = ({ settings }) => {
 
   return (
     <footer className="footer footer-center text-base-content rounded px-4 sm:px-6 lg:px-10 pt-10 pb-5">
-      <nav className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
+      <nav className="grid grid-cols-5 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
         <Link
           href="/"
           className="link link-hover text-brand hover:text-primary text-sm sm:text-base"
@@ -75,7 +75,7 @@ const Footer = ({ settings }) => {
         </div>
       </nav>
       <aside className="border-t w-full pt-5">
-        <p className="text-sm sm:text-base">
+        <p className="text-xs sm:text-base">
           Copyright{' '}
           <span className="text-primary">©{new Date().getFullYear()}</span> -
           All right reserved by {settings?.name || config.siteName}

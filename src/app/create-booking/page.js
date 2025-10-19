@@ -171,33 +171,35 @@ const page = () => {
   }, [searchParams]);
 
   return (
-    <div className="container mx-auto md:px-6 px-4 md:py-16 py-10 min-h-screen">
-      <div className="text-center mb-4">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-16 min-h-screen">
+      <div className="text-center mb-4 sm:mb-6">
         <Title>Booking Details</Title>
       </div>
       <div className="mx-auto max-w-4xl">
         {/* Progress Indicator */}
-        <div className="mb-8">
-          <div className="flex items-center justify-center space-x-4">
+        <div className="mb-6 sm:mb-8">
+          <div className="flex items-center justify-center space-x-2 sm:space-x-4">
             <div
-              className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold ${
+              className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs sm:text-sm font-semibold ${
                 step >= 1 ? 'bg-brand text-white' : 'bg-gray-200 text-gray-600'
               }`}
             >
               1
             </div>
             <div
-              className={`w-16 h-1 ${step >= 2 ? 'bg-brand' : 'bg-gray-200'}`}
+              className={`w-8 sm:w-16 h-1 ${
+                step >= 2 ? 'bg-brand' : 'bg-gray-200'
+              }`}
             ></div>
             <div
-              className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold ${
+              className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs sm:text-sm font-semibold ${
                 step >= 2 ? 'bg-brand text-white' : 'bg-gray-200 text-gray-600'
               }`}
             >
               2
             </div>
           </div>
-          <div className="flex justify-between mt-2 text-xs text-gray-600">
+          <div className="flex justify-between mt-2 text-xs sm:text-sm text-gray-600">
             <span>Booking Details</span>
             <span>Customer Details</span>
           </div>

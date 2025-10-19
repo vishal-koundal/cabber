@@ -15,8 +15,8 @@ export default async function CarsPage() {
         title="Our Cars Collection"
         subtitle="Choose from our premium collection of luxury vehicles for your next journey"
       />
-      <div className="container mx-auto max-w-6xl px-8 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {cars.map((car) => (
             <CarItem key={car._id} car={car} />
           ))}
