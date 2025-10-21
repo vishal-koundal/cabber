@@ -24,7 +24,7 @@ const ServiceItem = ({ item }) => {
           {item.description}
         </p>
         <Link
-          href="/"
+          href="/cars"
           className="text-sm font-medium flex items-center text-primary mt-4 sm:mt-5 hover:text-primary/80 transition-colors"
         >
           Book Now
