@@ -5,7 +5,7 @@ import { getAllBlogs } from '../../../lib/sanity';
 
 const page = async () => {
   const blogs = await getAllBlogs();
-  console.log('blogs', blogs);
+  // console.log('blogs', blogs);
   return (
     <main className="min-h-screen">
       <PageHeader

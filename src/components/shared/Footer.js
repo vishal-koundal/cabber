@@ -23,6 +23,11 @@ const Footer = ({ settings }) => {
       icon: '/icons/instagram.png',
       href: socialLinks.instagram || config.instagram,
     },
+    {
+      id: 4,
+      icon: '/icons/whatsapp.png',
+      href: socialLinks.whatsapp || config.whatsapp,
+    },
   ];
 
   return (

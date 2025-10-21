@@ -8,8 +8,8 @@ const config = {
   projectKey: 'luxurycarswale-0987',
   graphQlUri: '',
   graphQlUriDev: '',
-  email: 'luxurycarswale@hi.com',
-  telephone: '+91-9876543210',
+  email: 'luxurycarswale107@gmail.com',
+  telephone: '+91-9876841005',
   location: '22 fk11hg',
   twitter: '@luxurycarswale',
   address: {
@@ -23,6 +23,7 @@ const config = {
   facebook: 'https://www.facebook.com/@Luxurycarswale',
   instagram: 'https://www.instagram.com/@Luxurycarswale',
   youtube: 'https://www.youtube.com/@Luxurycarswale',
+  whatsapp: 'https://wa.me/919876841005',
   currency: '₹',
 };
 
