@@ -104,9 +104,9 @@ export default function Footer({ settings }) {
               </li>
               <li>
                 <span className="font-medium text-white">Address:</span>{' '}
-                <p className="text-white hover:underline hover:text-gray-300">
+                <span className="text-white hover:underline hover:text-gray-300">
                   {contactInfo.address}
-                </p>
+                </span>
               </li>
             </ul>
           </div>
