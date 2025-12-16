@@ -49,7 +49,7 @@ const SuccessPopup = ({ onClose, telegramStatus, sanityStatus }) => {
                   d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"
                 />
               </svg>
-              Database Status
+              Booking Status
             </h4>
             {sanityStatus.isSaving && (
               <div className="flex items-center text-sm text-purple-600">
@@ -131,7 +131,7 @@ const SuccessPopup = ({ onClose, telegramStatus, sanityStatus }) => {
                   d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
                 />
               </svg>
-              Notification Status
+              Email Status
             </h4>
             {telegramStatus.isSending && (
               <div className="flex items-center text-sm text-blue-600">
@@ -172,7 +172,7 @@ const SuccessPopup = ({ onClose, telegramStatus, sanityStatus }) => {
                     d="M5 13l4 4L19 7"
                   />
                 </svg>
-                Notification sent successfully!
+                Details sent successfully to your Email!.
               </div>
             )}
             {telegramStatus.error && (

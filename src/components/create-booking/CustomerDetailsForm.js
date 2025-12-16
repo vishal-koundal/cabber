@@ -91,6 +91,8 @@ const CustomerDetailsForm = ({
     }
   };
 
+  const today = new Date().toISOString().split('T')[0];
+
   return (
     <div className="border rounded-lg py-6">
       <div className="px-5">
@@ -199,6 +201,7 @@ const CustomerDetailsForm = ({
                   name="startDate"
                   type="date"
                   value={formData.startDate}
+                  min={today}
                   onChange={(e) =>
                     handleInputChange('startDate', e.target.value)
                   }
@@ -210,6 +213,7 @@ const CustomerDetailsForm = ({
                   label="End Date"
                   name="endDate"
                   type="date"
+                  min={today}
                   value={formData.endDate}
                   onChange={(e) => handleInputChange('endDate', e.target.value)}
                   error={errors.endDate}
