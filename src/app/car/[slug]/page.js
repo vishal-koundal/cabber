@@ -21,19 +21,18 @@ export async function generateMetadata({ params }) {
     description:
       car.description ||
       `Book ${car.name} for your next trip. ${config.description}`,
-    keywords: [
-      ...(config.keywords || [
-        'luxury cars',
-        'car rental',
-        'cab service',
-        'self drive',
-        'wedding cars',
-      ]),
-      car.title,
-      car.category?.name || 'luxury car',
-      'car booking',
-      'rent a car',
-    ],
+    keywords: Array.from(
+      new Set(
+        [
+          ...(config?.keywords ?? car?.keywords ?? []),
+          car?.title,
+          car?.category?.name || 'luxury car',
+          'car booking',
+          'rent a car',
+        ].filter(Boolean)
+      )
+    ),
+
     openGraph: {
       title: `${car.name} | ${config.siteName}`,
       description:
