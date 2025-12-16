@@ -42,7 +42,7 @@ function ProductItem({ item }) {
             {item.name || 'Car name'}
           </span>
           <span className="text-grayDark text-xs sm:text-sm my-1.5">
-            {item.description || 'Lorem ipsum doler sit amit'}
+            {item.description || ''}
           </span>
         </div>
       </div>

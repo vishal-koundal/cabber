@@ -57,7 +57,7 @@ export async function generateMetadata() {
 
 const page = async () => {
   const settings = await getSiteSettings();
-
+  // console.log('settings', settings);
   return (
     <main className="min-h-screen">
       <PageHeader title="About" subtitle="About Us" />
@@ -65,7 +65,7 @@ const page = async () => {
       <ContactDetails settings={settings} />
       <div className="w-full">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2230.0371945917636!2d-3.6093949841198762!3d56.01802837897224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4887d7c7bf2cc359%3A0xf451f8e35fae96d4!2sPier%20Pizzaz!5e0!3m2!1sen!2suk!4v1670296307541!5m2!1sen!2suk"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3406.5533995757773!2d75.55977341130355!3d31.371301074175282!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a50688098af35%3A0x2ded7355b88d02f3!2sAshok%20Vihar%2C%20BABA%20MOHAN%20DASS%20MARKET%2C%20Salempur%20Rd%2C%20near%20Baba%20Mohan%20Dass%20Mandir%2C%20Ashok%20Vihar%20Colony%2C%20Salempur%2C%20Jalandhar%2C%20Punjab%20144008!5e0!3m2!1sen!2sin!4v1765915350434!5m2!1sen!2sin"
           alt="none"
           className="w-full h-64 sm:h-80 md:h-[500px]"
           allowFullScreen
