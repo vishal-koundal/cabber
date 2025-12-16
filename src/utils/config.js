@@ -25,6 +25,7 @@ const config = {
   youtube: 'https://www.youtube.com/@Luxurycarswale',
   whatsapp: 'https://wa.me/919876841005',
   currency: '₹',
+  deliveryCharges: 500,
 };
 
 export default config;

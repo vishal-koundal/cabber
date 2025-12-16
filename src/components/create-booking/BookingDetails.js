@@ -235,16 +235,19 @@ const BookingDetails = ({
             </div>
             <div className="flex items-center justify-between ">
               <span>Doorstep delivery & pickup</span>
-              <span>{config.currency} 100</span>
+              <span>
+                {config.currency} {config.deliveryCharges}
+              </span>
             </div>
-            <div className="flex items-center justify-between ">
+            {/* <div className="flex items-center justify-between ">
               <span>Insurance & GST</span>
               <span>{config.currency} 80</span>
-            </div>
+            </div> */}
             <div className="flex items-center justify-between font-bold">
               <span className="">Total Base fare</span>
               <span>
-                {config.currency} {(car?.basePrice || 0) + 100 + 80}
+                {config.currency}{' '}
+                {(car?.basePrice || 0) + config.deliveryCharges}
               </span>
             </div>
           </div>
