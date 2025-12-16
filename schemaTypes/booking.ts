@@ -4,61 +4,30 @@ export default defineType({
   name: 'booking',
   title: 'Booking',
   type: 'document',
+
   fields: [
+    /* -------------------- Booking Meta -------------------- */
     defineField({
-      name: 'selectedCar',
-      title: 'Selected Car',
-      type: 'reference',
-      to: {type: 'car'},
+      name: 'bookingId',
+      title: 'Booking ID',
+      type: 'string',
+      readOnly: true,
+    }),
+
+    defineField({
+      name: 'bookingType',
+      title: 'Booking Type',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Self Drive', value: 'self-drive'},
+          {title: 'Cab', value: 'cab'},
+          {title: 'Wedding', value: 'wedding'},
+        ],
+      },
       validation: (Rule) => Rule.required(),
     }),
-    defineField({
-      name: 'customerDetails',
-      title: 'Customer Details',
-      type: 'object',
-      fields: [
-        defineField({
-          name: 'name',
-          title: 'Customer Name',
-          type: 'string',
-          validation: (Rule) => Rule.required().min(2).max(100),
-        }),
-        defineField({
-          name: 'email',
-          title: 'Email',
-          type: 'string',
-          validation: (Rule) => Rule.required().email(),
-        }),
-        defineField({
-          name: 'phone',
-          title: 'Phone Number',
-          type: 'string',
-          validation: (Rule) =>
-            Rule.required().regex(/^[0-9+\-\s()]+$/, {
-              name: 'phone number',
-              invert: false,
-            }),
-        }),
-      ],
-    }),
-    defineField({
-      name: 'pickupLocation',
-      title: 'Pickup Location',
-      type: 'string',
-      validation: (Rule) => Rule.required().min(5).max(200),
-    }),
-    defineField({
-      name: 'dropLocation',
-      title: 'Drop Location',
-      type: 'string',
-      validation: (Rule) => Rule.required().min(5).max(200),
-    }),
-    defineField({
-      name: 'bookingDate',
-      title: 'Booking Date',
-      type: 'datetime',
-      validation: (Rule) => Rule.required(),
-    }),
+
     defineField({
       name: 'status',
       title: 'Booking Status',
@@ -76,42 +45,180 @@ export default defineType({
       initialValue: 'pending',
       validation: (Rule) => Rule.required(),
     }),
+
+    /* -------------------- Customer Details -------------------- */
     defineField({
-      name: 'notes',
-      title: 'Additional Notes',
-      type: 'text',
-      validation: (Rule) => Rule.max(500),
+      name: 'customerDetails',
+      title: 'Customer Details',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'name',
+          title: 'Customer Name',
+          type: 'string',
+          validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+          name: 'email',
+          title: 'Email',
+          type: 'string',
+          validation: (Rule) => Rule.required().email(),
+        }),
+        defineField({
+          name: 'mobile',
+          title: 'Mobile Number',
+          type: 'string',
+          validation: (Rule) =>
+            Rule.required().regex(/^[0-9+\-\s()]+$/, {
+              name: 'mobile number',
+            }),
+        }),
+        defineField({
+          name: 'message',
+          title: 'Customer Message',
+          type: 'text',
+        }),
+      ],
+    }),
+
+    /* -------------------- Trip Details -------------------- */
+    defineField({
+      name: 'tripDetails',
+      title: 'Trip Details',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'pickupLocation',
+          title: 'Pickup Location',
+          type: 'string',
+        }),
+        defineField({
+          name: 'dropLocation',
+          title: 'Drop Location',
+          type: 'string',
+        }),
+        defineField({
+          name: 'tripType',
+          title: 'Trip Type',
+          type: 'string',
+        }),
+        defineField({
+          name: 'daysRequired',
+          title: 'Days Required',
+          type: 'number',
+        }),
+        defineField({
+          name: 'startDate',
+          title: 'Start Date',
+          type: 'datetime',
+        }),
+        defineField({
+          name: 'endDate',
+          title: 'End Date',
+          type: 'datetime',
+        }),
+      ],
+    }),
+
+    /* -------------------- Car Snapshot -------------------- */
+    defineField({
+      name: 'carDetails',
+      title: 'Car Details',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'name',
+          title: 'Car Name',
+          type: 'string',
+        }),
+        defineField({
+          name: 'seats',
+          title: 'Seats',
+          type: 'string',
+        }),
+        defineField({
+          name: 'fuelType',
+          title: 'Fuel Type',
+          type: 'string',
+        }),
+        defineField({
+          name: 'category',
+          title: 'Category',
+          type: 'string',
+        }),
+      ],
+    }),
+
+    /* -------------------- Pricing -------------------- */
+    defineField({
+      name: 'pricing',
+      title: 'Pricing Details',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'baseFare',
+          title: 'Base Fare',
+          type: 'number',
+        }),
+        defineField({
+          name: 'deliveryPickup',
+          title: 'Delivery / Pickup Charges',
+          type: 'number',
+        }),
+        defineField({
+          name: 'insuranceGst',
+          title: 'Insurance & GST',
+          type: 'number',
+        }),
+        defineField({
+          name: 'total',
+          title: 'Total Amount',
+          type: 'number',
+        }),
+        defineField({
+          name: 'currency',
+          title: 'Currency',
+          type: 'string',
+          initialValue: '₹',
+        }),
+      ],
+    }),
+
+    /* -------------------- Integrations -------------------- */
+    defineField({
+      name: 'telegramSent',
+      title: 'Telegram Notification Sent',
+      type: 'boolean',
+      initialValue: false,
     }),
   ],
+
+  /* -------------------- Preview -------------------- */
   preview: {
     select: {
-      title: 'customerDetails.name',
-      subtitle: 'selectedCar.name',
+      title: 'bookingId',
+      subtitle: 'customerDetails.name',
       status: 'status',
     },
-    prepare(selection) {
-      const {title, subtitle, status} = selection
+    prepare({title, subtitle, status}) {
       return {
-        title: `${title} - ${subtitle}`,
-        subtitle: `Status: ${status?.charAt(0).toUpperCase() + status?.slice(1)}`,
+        title: title || 'New Booking',
+        subtitle: `${subtitle || 'Customer'} • ${status}`,
       }
     },
   },
+
+  /* -------------------- Orderings -------------------- */
   orderings: [
     {
-      title: 'Booking Date (Newest)',
-      name: 'bookingDateDesc',
-      by: [{field: 'bookingDate', direction: 'desc'}],
+      title: 'Newest Bookings',
+      name: 'createdDesc',
+      by: [{field: '_createdAt', direction: 'desc'}],
     },
     {
-      title: 'Booking Date (Oldest)',
-      name: 'bookingDateAsc',
-      by: [{field: 'bookingDate', direction: 'asc'}],
-    },
-    {
-      title: 'Customer Name',
-      name: 'customerName',
-      by: [{field: 'customerDetails.name', direction: 'asc'}],
+      title: 'Oldest Bookings',
+      name: 'createdAsc',
+      by: [{field: '_createdAt', direction: 'asc'}],
     },
   ],
 })
