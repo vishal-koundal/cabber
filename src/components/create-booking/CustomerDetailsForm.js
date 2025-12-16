@@ -51,7 +51,7 @@ const CustomerDetailsForm = ({
       newErrors.mobile = 'Mobile number must be 10 digits';
 
     // Cab specific validations
-    if (bookingType === 'cab') {
+    if (bookingType === 'cab' || bookingType === 'wedding') {
       if (!formData.pickupLocation.trim())
         newErrors.pickupLocation = 'Pickup location is required';
       if (!formData.dropLocation.trim())
@@ -97,8 +97,8 @@ const CustomerDetailsForm = ({
     <div className="border rounded-lg py-6">
       <div className="px-5">
         <h3 className="text-lg font-semibold mb-4">
-          {bookingType === 'cab'
-            ? 'Cab Booking Details'
+          {bookingType === 'cab' || bookingType === 'wedding'
+            ? 'Car Booking Details'
             : 'Self Drive Booking Details'}
         </h3>
 
@@ -138,7 +138,7 @@ const CustomerDetailsForm = ({
           </div>
 
           {/* Cab Specific Fields */}
-          {bookingType === 'cab' && (
+          {(bookingType === 'cab' || bookingType === 'wedding') && (
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <InputField
@@ -164,20 +164,22 @@ const CustomerDetailsForm = ({
                 />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <SelectInput
-                  label="Trip Type"
-                  name="tripType"
-                  value={formData.tripType}
-                  onChange={(e) =>
-                    handleInputChange('tripType', e.target.value)
-                  }
-                  options={[
-                    { value: 'single', label: 'Single Trip' },
-                    { value: 'round', label: 'Round Trip' },
-                  ]}
-                />
-              </div>
+              {bookingType === 'cab' && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <SelectInput
+                    label="Trip Type"
+                    name="tripType"
+                    value={formData.tripType}
+                    onChange={(e) =>
+                      handleInputChange('tripType', e.target.value)
+                    }
+                    options={[
+                      { value: 'single', label: 'Single Trip' },
+                      { value: 'round', label: 'Round Trip' },
+                    ]}
+                  />
+                </div>
+              )}
             </>
           )}
 

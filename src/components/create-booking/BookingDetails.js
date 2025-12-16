@@ -239,10 +239,12 @@ const BookingDetails = ({
                 {config.currency} {config.deliveryCharges}
               </span>
             </div>
-            {/* <div className="flex items-center justify-between ">
+            <div className="flex items-center justify-between ">
               <span>Insurance & GST</span>
-              <span>{config.currency} 80</span>
-            </div> */}
+              <span>
+                {config.currency} {config.insuranceGst}
+              </span>
+            </div>
             <div className="flex items-center justify-between font-bold">
               <span className="">Total Base fare</span>
               <span>

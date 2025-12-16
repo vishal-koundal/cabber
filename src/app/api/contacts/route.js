@@ -36,7 +36,7 @@ export async function POST(request) {
     let telegramResult = { success: false, messageId: null };
     try {
       const telegramMessage = `
-        *New Contact Form Submission at ${config.siteName}*
+        *New Contact at ${config.siteName}*
 👤 *Contact Details:*
 • Name: ${contactData.name}
 • Email: ${contactData.email}

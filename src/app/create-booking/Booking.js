@@ -9,6 +9,7 @@ import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { getCarBySlug } from '../../../lib/sanity';
 import { Suspense } from 'react';
+import config from '@/utils/config';
 
 const Booking = () => {
   const [step, setStep] = useState(1);
@@ -32,9 +33,9 @@ const Booking = () => {
     bookingId: null,
   });
 
-  const handleStepChange = (newStep) => {
-    setStep(newStep);
-  };
+  // const handleStepChange = (newStep) => {
+  //   setStep(newStep);
+  // };
 
   const handleBookingTypeSelect = (type) => {
     setBookingData((prev) => ({ ...prev, bookingType: type }));
@@ -45,9 +46,17 @@ const Booking = () => {
     setStep(3);
   };
 
-  const handleTripDetailsSubmit = async (tripDetails) => {
+  const handleTripDetailsSubmit = async (formData) => {
+    const { name, email, mobile, message, ...tripDetails } = formData;
+
     const updatedBookingData = {
       ...bookingData,
+      customerDetails: {
+        name,
+        email,
+        mobile,
+        message,
+      },
       tripDetails,
       carDetails: selectedCar
         ? {
@@ -63,13 +72,17 @@ const Booking = () => {
       pricing: selectedCar
         ? {
             baseFare: selectedCar.basePrice || 0,
-            deliveryPickup: 100,
-            insuranceGst: 80,
-            total: (selectedCar.basePrice || 0) + 100 + 80,
-            currency: '₹',
+            deliveryPickup: config.deliveryCharges,
+            insuranceGst: config.insuranceGst,
+            total:
+              (selectedCar.basePrice || 0) +
+              config.deliveryCharges +
+              config.insuranceGst,
+            currency: config.currency,
           }
         : undefined,
     };
+
     setBookingData(updatedBookingData);
 
     // Set loading states

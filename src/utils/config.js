@@ -26,6 +26,7 @@ const config = {
   whatsapp: 'https://wa.me/919876841005',
   currency: '₹',
   deliveryCharges: 500,
+  insuranceGst: 300,
 };
 
 export default config;
