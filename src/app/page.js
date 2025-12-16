@@ -90,7 +90,6 @@ export default async function Home() {
       <Services />
       <CarsHome />
       <Reviews settings={settings} />
-
       <BlogsHome />
     </main>
   );

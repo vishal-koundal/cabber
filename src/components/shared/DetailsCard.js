@@ -116,7 +116,7 @@ function DetailsCard({
                 {/* Price for cars */}
                 {type === 'car' && (
                   <div className="flex items-center">
-                    <span className="text-gray-600">Base Price</span>
+                    <span className="text-gray-500">Base Price</span>
                     <p className="text-xl ml-2 font-bold text-brand">
                       {config.currency} {data.price}
                     </p>
@@ -126,17 +126,17 @@ function DetailsCard({
                 {/* Blog metadata */}
                 {type === 'blog' && (
                   <div className="space-y-2">
-                    <div className="flex items-center text-sm text-gray-600">
+                    <div className="flex items-center text-sm text-gray-500">
                       <span className="font-semibold mr-2">Author:</span>
                       <span>{data.author}</span>
                     </div>
-                    <div className="flex items-center text-sm text-gray-600">
+                    <div className="flex items-center text-sm text-gray-500">
                       <span className="font-semibold mr-2">Published:</span>
                       <span>
                         {new Date(data.publishDate).toLocaleDateString()}
                       </span>
                     </div>
-                    <div className="flex items-center text-sm text-gray-600">
+                    <div className="flex items-center text-sm text-gray-500">
                       <span className="font-semibold mr-2">Read Time:</span>
                       <span>{data.readTime}</span>
                     </div>
@@ -150,19 +150,19 @@ function DetailsCard({
                       <span className="font-semibold mr-3 text-gray-700">
                         Category:
                       </span>
-                      <span className="text-gray-600">{data.category}</span>
+                      <span className="text-gray-500">{data.category}</span>
                     </div>
                     <div className="flex items-center text-sm">
                       <span className="font-semibold mr-3 text-gray-700">
                         Passengers:
                       </span>
-                      <span className="text-gray-600">{data.passengers}</span>
+                      <span className="text-gray-500">{data.passengers}</span>
                     </div>
                     <div className="flex items-center text-sm">
                       <span className="font-semibold mr-3 text-gray-700">
                         Fuel:
                       </span>
-                      <span className="text-gray-600">{data.fuel}</span>
+                      <span className="text-gray-500">{data.fuel}</span>
                     </div>
                   </div>
                 )}

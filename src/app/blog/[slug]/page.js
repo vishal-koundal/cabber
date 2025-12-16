@@ -166,7 +166,7 @@ export default async function BlogPostPage({ params }) {
         {/* Blog Header */}
         <header className="mb-6 sm:mb-8">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-2">
-            <div className="flex items-center space-x-2 sm:space-x-4 text-xs sm:text-sm text-gray-600">
+            <div className="flex items-center space-x-2 sm:space-x-4 text-xs sm:text-sm text-gray-500">
               <span>By {blog.author}</span>
               <span>•</span>
               <span>{new Date(blog.publishedAt).toLocaleDateString()}</span>
@@ -183,7 +183,7 @@ export default async function BlogPostPage({ params }) {
           </h1>
 
           {blog.excerpt && (
-            <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
+            <p className="text-lg sm:text-xl text-gray-500 leading-relaxed">
               {blog.excerpt}
             </p>
           )}

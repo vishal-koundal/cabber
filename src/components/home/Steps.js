@@ -25,39 +25,43 @@ const data = [
 ];
 const Steps = () => {
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-gray-50">
+    <section className="py-16 lg:py-20 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+        {/* Heading */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl lg:text-4xl font-bold text-secondary">
             How It Works
           </h2>
-          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-grayDark max-w-2xl mx-auto mt-3">
             Simple steps to book your perfect ride
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        {/* Steps Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {data?.map((item, index) => (
-            <div key={item.id} className="text-center group">
-              <div className="relative mb-4 sm:mb-6">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto bg-blue-100 rounded-full flex items-center justify-center group-hover:bg-blue-200 transition-colors duration-300">
-                  <Image
-                    src={item.icon}
-                    width={32}
-                    height={32}
-                    alt={item.title}
-                    className="sm:w-10 sm:h-10"
-                  />
-                </div>
-                {/* <div className="absolute -top-2 -right-2 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">
-                  {index + 1}
-                </div> */}
+            <div
+              key={item.id}
+              className="text-center bg-white border borderLight rounded-2xl p-8 hover:shadow-lg transition-all duration-300"
+            >
+              {/* Icon */}
+              <div className="w-20 h-20 mx-auto flex items-center justify-center bg-primary/10 rounded-full mb-6 group-hover:bg-primary/20 transition">
+                <Image
+                  src={item.icon}
+                  width={36}
+                  height={36}
+                  alt={item.title}
+                  className="opacity-90"
+                />
               </div>
 
-              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3">
+              {/* Title */}
+              <h3 className="text-xl font-semibold text-secondary mb-2">
                 {item.title}
               </h3>
-              <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+
+              {/* Description */}
+              <p className="text-grayDark text-sm leading-relaxed">
                 {item.description}
               </p>
             </div>

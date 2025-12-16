@@ -1,9 +1,12 @@
-import config from '@/utils/config';
-import Image from 'next/image';
+'use client';
 import Link from 'next/link';
-import React from 'react';
+import Image from 'next/image';
 
-const Footer = ({ settings }) => {
+import config from '@/utils/config';
+import Logo from './Logo';
+
+export default function Footer({ settings }) {
+  const year = new Date().getFullYear();
   const socialLinks = settings?.socialLinks || {};
   const contactInfo = settings?.contactInfo || {};
 
@@ -29,88 +32,116 @@ const Footer = ({ settings }) => {
       href: socialLinks.whatsapp || config.whatsapp,
     },
   ];
-
   return (
-    <footer className="footer footer-center text-base-content rounded px-4 sm:px-6 lg:px-10 pt-10 pb-5">
-      <nav className="grid grid-cols-5 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
-        <Link
-          href="/"
-          className="link link-hover text-brand hover:text-primary text-sm sm:text-base"
-        >
-          Home
-        </Link>
-        <Link
-          href="/about"
-          className="link link-hover text-brand hover:text-primary text-sm sm:text-base"
-        >
-          About us
-        </Link>
-        <Link
-          href="/cars"
-          className="link link-hover text-brand hover:text-primary text-sm sm:text-base"
-        >
-          Cars
-        </Link>
-        <Link
-          href="/contact"
-          className="link link-hover text-brand hover:text-primary text-sm sm:text-base"
-        >
-          Contact
-        </Link>
-        <Link
-          href="/blogs"
-          className="link link-hover text-brand hover:text-primary text-sm sm:text-base"
-        >
-          Blog
-        </Link>
-      </nav>
-      <nav>
-        <div className="flex justify-center gap-4 mb-6">
-          {socials.map((item) => (
-            <a
-              href={item.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              key={item.id}
-              className="hover:opacity-80 transition-opacity"
-            >
-              <Image src={item.icon} height={32} width={32} alt="Social link" />
-            </a>
-          ))}
+    <footer className="bg-brand text-light">
+      <div className="mx-auto max-w-6xl px-4 py-10">
+        {/* Top Links Row */}
+        <div className="grid gap-8 md:grid-cols-3 md:text-left">
+          {/* Branding */}
+          <div>
+            <div className="-ml-4">
+              <Link className="text-3xl font-bold leading-none" href="/">
+                <Logo />
+              </Link>
+            </div>
+            <p className="mt-3 text-sm text-light/80">{config.description}</p>
+          </div>
+
+          {/* Main Navigation */}
+          <div>
+            <h4 className="text-white font-semibold mb-3">Helper Links</h4>
+            <ul className="space-y-2 text-sm text-light/80">
+              <li>
+                <Link href="/" className="hover:text-white transition">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="hover:text-white transition">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/cars" className="hover:text-white transition">
+                  Cars
+                </Link>
+              </li>
+              <li>
+                <Link href="/blogs" className="hover:text-white transition">
+                  Blogs
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-white transition">
+                  Contact Us
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h4 className="text-white font-semibold mb-3">Contact Info</h4>
+            <ul className="space-y-2 text-sm text-light/80">
+              <li>
+                <span className="font-medium text-white">Email:</span>{' '}
+                <a
+                  href={`mailto:${contactInfo.email}`}
+                  className="text-white hover:underline hover:text-gray-300"
+                >
+                  {contactInfo.email}
+                </a>
+              </li>
+
+              <li>
+                <span className="font-medium text-white">Phone:</span>{' '}
+                <a
+                  href={`tel:${contactInfo.telephone}`}
+                  className="text-white hover:underline hover:text-gray-300"
+                >
+                  {contactInfo.mobile}
+                </a>
+              </li>
+              <li>
+                <span className="font-medium text-white">Address:</span>{' '}
+                <p className="text-white hover:underline hover:text-gray-300">
+                  {contactInfo.address}
+                </p>
+              </li>
+            </ul>
+          </div>
         </div>
-      </nav>
-      <aside className="border-t w-full pt-5">
-        <p className="text-xs sm:text-base">
-          Copyright{' '}
-          <span className="text-primary">©{new Date().getFullYear()}</span> -
-          All right reserved by {settings?.name || config.siteName}
-        </p>
-        <div className="flex flex-col sm:flex-row gap-2 sm:gap-5 items-center mt-2 text-center sm:text-left">
-          {contactInfo.address && (
-            <p className="text-xs sm:text-sm text-gray-600">
-              {contactInfo.address}
-            </p>
-          )}
-          {contactInfo.email && (
-            <a
-              href={`mailto:${contactInfo.email}`}
-              className="text-xs sm:text-sm text-gray-600 hover:text-primary transition-colors"
-            >
-              Email: {contactInfo.email}
-            </a>
-          )}
-          {contactInfo.mobile && (
-            <a
-              href={`tel:${contactInfo.mobile}`}
-              className="text-xs sm:text-sm text-gray-600 hover:text-primary transition-colors"
-            >
-              Phone: {contactInfo.mobile}
-            </a>
-          )}
+
+        {/* Divider */}
+        <div className="mt-8 border-t border-white/20"></div>
+
+        {/* Copyright */}
+        <div className="mt-6 text-center">
+          <p className="text-sm text-light/80">
+            &copy; {year} {config.siteName}. All rights reserved by{' '}
+            {settings?.name || config.siteName}
+          </p>
+
+          <div className="flex justify-center gap-4 mb-0 mt-4">
+            {socials.map((item) => (
+              <a
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                key={item.id}
+                className="hover:opacity-80 transition-opacity"
+              >
+                <Image
+                  src={item.icon}
+                  height={32}
+                  width={32}
+                  alt="Social link"
+                />
+              </a>
+            ))}
+          </div>
         </div>
-      </aside>
+      </div>
     </footer>
   );
-};
-
-export default Footer;
+}

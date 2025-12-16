@@ -1,12 +1,16 @@
-import { Inter } from 'next/font/google';
+import { Inter, Outfit } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/shared/Header';
 import Footer from '@/components/shared/Footer';
 import config from '@/utils/config';
 import { getSiteSettings, sanityImageUrl } from '../../lib/sanity';
 
-const inter = Inter({ subsets: ['latin'] });
+// const inter = Inter({ subsets: ['latin'] });
 
+const outfit = Outfit({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+});
 export async function generateMetadata() {
   const settings = await getSiteSettings();
 
@@ -140,7 +144,7 @@ export default async function RootLayout({ children }) {
           <meta name="address" content={settings.contactInfo.address} />
         )}
       </head>
-      <body className={inter.className}>
+      <body className={`${outfit.className} font-light`}>
         <Header settings={settings} />
         {children}
         <Footer settings={settings} />

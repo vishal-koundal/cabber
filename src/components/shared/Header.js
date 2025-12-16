@@ -1,8 +1,10 @@
+'use client';
 import Button from '@/elements/Button';
 import Link from 'next/link';
 import React from 'react';
 import Logo from './Logo';
 import config from '@/utils/config';
+import { useState } from 'react';
 
 const navLinks = [
   { id: '1', name: 'Home', href: '/' },
@@ -12,11 +14,11 @@ const navLinks = [
   { id: '5', name: 'Contact', href: '/contact' },
 ];
 const Header = ({ settings }) => {
-  // const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const isMenuOpen = false;
-  // const toggleMenu = () => {
-  //   setIsMenuOpen(!isMenuOpen);
-  // };
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // const isMenuOpen = false;
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <div className="bg-brand">
@@ -25,10 +27,10 @@ const Header = ({ settings }) => {
           <Link className="text-3xl font-bold leading-none" href="/">
             <Logo />
           </Link>
-          <div className="lg:hidden">
+          <div className="lg:hidden ml-auto">
             <button
               className="navbar-burger flex items-center text-white p-3"
-              // onClick={toggleMenu}
+              onClick={toggleMenu}
             >
               <svg
                 className="block h-4 w-4 fill-current"
@@ -120,7 +122,7 @@ const Header = ({ settings }) => {
                     <li className="mb-1" key={item.id}>
                       <Link
                         href={item.href}
-                        className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
+                        className="block p-4 text-sm font-semibold text-gray-400 hover:bg-primary/10 hover:text-primary rounded"
                         onClick={toggleMenu}
                       >
                         {item.name}
@@ -132,7 +134,7 @@ const Header = ({ settings }) => {
               <div className="mt-auto">
                 <div className="pt-6">
                   <Link
-                    className="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700 rounded-xl"
+                    className="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-primary hover:bg-brand rounded-xl"
                     href="/contact"
                     onClick={toggleMenu}
                   >

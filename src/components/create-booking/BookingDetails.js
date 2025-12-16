@@ -66,7 +66,7 @@ const BookingDetails = ({
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900">Self Drive</h4>
-                  <p className="text-xs text-gray-600">
+                  <p className="text-xs text-gray-500">
                     Rent a car & drive yourself
                   </p>
                 </div>
@@ -127,7 +127,7 @@ const BookingDetails = ({
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900">Cab Service</h4>
-                  <p className="text-xs text-gray-600">
+                  <p className="text-xs text-gray-500">
                     Book a cab with driver
                   </p>
                 </div>
@@ -187,7 +187,7 @@ const BookingDetails = ({
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900">Wedding Car</h4>
-                  <p className="text-xs text-gray-600">
+                  <p className="text-xs text-gray-500">
                     Book a car for wedding
                   </p>
                 </div>

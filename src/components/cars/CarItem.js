@@ -9,58 +9,74 @@ const CarItem = ({ car }) => {
 
   return (
     <Link href={`/car/${car.slug?.current || car._id}`}>
-      <div className="delay-70 duration-500 ease-in-out hover:-translate-y-2 border border-borderLight group hover:border-brand rounded-lg overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow">
-        <div className="pt-4 sm:pt-6 px-4 sm:px-6 pb-4">
-          <h2 className="text-lg sm:text-xl text-brand font-semibold">
-            {car.name}
-          </h2>
-          <p className="text-grayDark text-sm font-light mt-2 line-clamp-2">
-            {car.description}
-          </p>
-          <div className="mt-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-            <span className="text-base sm:text-lg font-semibold text-green-600">
-              {config.currency}
-              {car.basePrice}
-              <span className="text-xs sm:text-sm font-light text-grayDark">
-                /Base Price
-              </span>
-            </span>
-            <span
-              className={`px-2 py-1 rounded text-xs w-fit ${
-                true ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
-              }`}
-            >
-              Available
-              {/* {car.availability ? 'Available' : 'Unavailable'} */}
+      <div
+        className="
+        group rounded-xl overflow-hidden bg-white border borderLight
+        transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1
+      "
+      >
+        {/* Image */}
+        <div className="relative rounded-t-xl overflow-hidden">
+          <Image
+            src={sanityImageUrl({ source: car.featureImage })}
+            alt={car.name}
+            width={500}
+            height={270}
+            className="w-full h-48 sm:h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+
+          {/* Gradient Overlay */}
+          <div
+            className="
+            absolute inset-0
+            bg-gradient-to-t from-black/40 via-black/10 to-transparent
+            pointer-events-none
+          "
+          />
+
+          {/* Seats Badge */}
+          <div className="flex items-center absolute bottom-3 left-3">
+            <div className="bg-white rounded-full h-9 w-9 flex items-center justify-center shadow">
+              <Image
+                src="/icons/group.png"
+                width={18}
+                height={18}
+                alt="Passengers"
+              />
+            </div>
+            <span className="text-white ml-2 text-xs sm:text-sm font-medium drop-shadow">
+              {car.seats || 4} Seats
             </span>
           </div>
         </div>
-        <div className="relative">
-          {car.featureImage ? (
-            <Image
-              src={sanityImageUrl({ source: car.featureImage })}
-              alt={car.name}
-              width={500}
-              height={270}
-              className="object-cover w-full h-48 sm:h-64"
-            />
-          ) : (
-            <div className="w-full h-48 sm:h-64 bg-gray-200 flex items-center justify-center">
-              <span className="text-gray-500 text-sm">No image available</span>
-            </div>
-          )}
-          <div className="flex items-center absolute bottom-3 sm:bottom-5 left-3 sm:left-5">
-            <div className="bg-white rounded-full h-8 w-8 sm:h-10 sm:w-10 bg-borderLight flex items-center justify-center shadow-sm">
-              <Image
-                src="/icons/group.png"
-                width={16}
-                height={16}
-                alt="Passengers"
-                className="sm:w-5 sm:h-5"
-              />
-            </div>
-            <span className="text-white ml-2 sm:ml-3 text-xs sm:text-sm font-medium">
-              Passengers {car.seats || 4}
+
+        {/* Content */}
+        <div className="px-5 py-5">
+          <h2 className="text-lg font-semibold text-secondary">{car.name}</h2>
+
+          <p className="text-grayDark text-sm mt-2 line-clamp-2">
+            {car.description}
+          </p>
+
+          {/* Price + Availability */}
+          <div className="mt-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <span className="text-primary font-normal text-lg flex items-baseline">
+              {config.currency}
+              {car.basePrice}
+              <span className="text-xs text-grayDark ml-1">/Base Price</span>
+            </span>
+
+            <span
+              className={`
+                px-2 py-1 rounded text-xs w-fit
+                ${
+                  true
+                    ? 'bg-green-100 text-green-700'
+                    : 'bg-red-100 text-red-700'
+                }
+              `}
+            >
+              Available
             </span>
           </div>
         </div>

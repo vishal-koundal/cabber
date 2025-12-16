@@ -27,7 +27,7 @@ const SuccessPopup = ({ onClose, telegramStatus, sanityStatus }) => {
           Booking Successful!
         </h3>
 
-        <p className="text-gray-600 mb-6">
+        <p className="text-gray-500 mb-6">
           Thanks, we will contact you soon to confirm your booking details and
           arrange your service.
         </p>
@@ -201,7 +201,7 @@ const SuccessPopup = ({ onClose, telegramStatus, sanityStatus }) => {
           <h4 className="font-semibold text-gray-900 mb-2">
             What happens next?
           </h4>
-          <ul className="text-sm text-gray-600 space-y-1">
+          <ul className="text-sm text-gray-500 space-y-1">
             <li>• Our team will review your booking</li>
             <li>• We'll contact you within 24 hours</li>
             <li>• We'll confirm all details and pricing</li>

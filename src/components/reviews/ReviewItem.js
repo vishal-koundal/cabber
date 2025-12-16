@@ -1,9 +1,10 @@
-import React from 'react';
-
 const ReviewItem = ({ review }) => {
+  if (!review) return null;
+
   const renderStars = (rating) => {
     const stars = [];
     const numRating = parseInt(rating) || 5;
+
     for (let i = 0; i < 5; i++) {
       stars.push(
         <svg
@@ -21,25 +22,28 @@ const ReviewItem = ({ review }) => {
     return stars;
   };
 
-  if (!review) return null;
-
   return (
-    <div className="mb-6 sm:mb-8">
-      <blockquote className="rounded-lg bg-gray-50 p-4 sm:p-6 lg:p-8 shadow-sm hover:shadow-md transition-shadow">
-        <div className="flex items-center gap-4">
-          <div className="w-full">
-            <div className="flex justify-center sm:justify-start gap-0.5 text-green-500 mb-2">
-              {renderStars(review.rating)}
-            </div>
-
-            <p className="mt-0.5 text-base sm:text-lg font-medium text-gray-900 text-center sm:text-left">
-              {review.name}
-            </p>
+    <div>
+      <blockquote
+        className="
+          bg-white border borderLight rounded-xl p-6 sm:p-7 lg:p-8
+          shadow-sm hover:shadow-lg transition-all duration-300
+        "
+      >
+        {/* Stars + Name */}
+        <div className="text-center sm:text-left">
+          <div className="flex justify-center sm:justify-start gap-0.5 text-primary mb-2">
+            {renderStars(review.rating)}
           </div>
+
+          <h4 className="text-secondary font-semibold text-base sm:text-lg">
+            {review.name}
+          </h4>
         </div>
 
-        <p className="mt-4 text-sm sm:text-base text-gray-700 leading-relaxed">
-          {review.review}
+        {/* Review Text */}
+        <p className="mt-4 text-sm sm:text-base text-grayDark leading-relaxed">
+          “{review.review}”
         </p>
       </blockquote>
     </div>

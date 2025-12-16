@@ -66,7 +66,7 @@ function CarDetails({ car }) {
           <h2 className="text-2xl font-semibold text-gray-900 mb-2">
             Car Not Found
           </h2>
-          <p className="text-gray-600">The requested car could not be found.</p>
+          <p className="text-gray-500">The requested car could not be found.</p>
         </div>
       </div>
     );
@@ -123,7 +123,7 @@ function CarDetails({ car }) {
                   {car.title || car.name}
                 </h1>
                 {car.description && (
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-500 leading-relaxed">
                     {car.description}
                   </p>
                 )}

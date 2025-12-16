@@ -15,9 +15,12 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+@theme {
+  --shadow-drop: 0px 24px 40px 0px #0000001a;
+}
 
 body {
-  color: rgb(var(--foreground-rgb));
+  /* color: rgb(var(--foreground-rgb)); */
   background: white;
 }
 

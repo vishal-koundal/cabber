@@ -10,12 +10,16 @@ module.exports = {
   theme: {
     extend: {
       colors: () => ({
-        brand: '#000000',
-        primary: '#5046e5 ',
-        secondary: '#343434',
-        light: '#f6f6f6',
-        grayDark: '#797979',
-        borderLight: '#e5e5e5',
+        brand: '#1a1a1a', // softer black
+        primary: '#5046e5', // your existing color
+        primaryHover: '#4036d1', // darker shade for hover
+        secondary: '#343434', // keep
+        secondaryHover: '#2a2a2a',
+        light: '#f5f5f5', // keep
+        grayDark: '#797979', // keep
+        grayLight: '#bfbfbf', // added for text / icons
+        borderLight: '#e5e5e5', // keep
+        background: '#fafafa', // added clean BG tone
       }),
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -30,4 +34,4 @@ module.exports = {
     },
   },
   plugins: [require('daisyui')],
-}
+};
