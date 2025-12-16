@@ -11,6 +11,7 @@ import {
 } from '@/utils/telegramFormatter';
 import { useSearchParams } from 'next/navigation';
 import { getCarBySlug } from '../../../lib/sanity';
+import { Suspense } from 'react';
 
 const page = () => {
   const [step, setStep] = useState(1);
@@ -171,69 +172,75 @@ const page = () => {
   }, [searchParams]);
 
   return (
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-16 min-h-screen">
-      <div className="text-center mb-4 sm:mb-6">
-        <Title>Booking Details</Title>
-      </div>
-      <div className="mx-auto max-w-4xl">
-        {/* Progress Indicator */}
-        <div className="mb-6 sm:mb-8">
-          <div className="flex items-center justify-center space-x-2 sm:space-x-4">
-            <div
-              className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs sm:text-sm font-semibold ${
-                step >= 1 ? 'bg-brand text-white' : 'bg-gray-200 text-gray-500'
-              }`}
-            >
-              1
+    <Suspense>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-16 min-h-screen">
+        <div className="text-center mb-4 sm:mb-6">
+          <Title>Booking Details</Title>
+        </div>
+        <div className="mx-auto max-w-4xl">
+          {/* Progress Indicator */}
+          <div className="mb-6 sm:mb-8">
+            <div className="flex items-center justify-center space-x-2 sm:space-x-4">
+              <div
+                className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs sm:text-sm font-semibold ${
+                  step >= 1
+                    ? 'bg-brand text-white'
+                    : 'bg-gray-200 text-gray-500'
+                }`}
+              >
+                1
+              </div>
+              <div
+                className={`w-8 sm:w-16 h-1 ${
+                  step >= 2 ? 'bg-brand' : 'bg-gray-200'
+                }`}
+              ></div>
+              <div
+                className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs sm:text-sm font-semibold ${
+                  step >= 2
+                    ? 'bg-brand text-white'
+                    : 'bg-gray-200 text-gray-500'
+                }`}
+              >
+                2
+              </div>
             </div>
-            <div
-              className={`w-8 sm:w-16 h-1 ${
-                step >= 2 ? 'bg-brand' : 'bg-gray-200'
-              }`}
-            ></div>
-            <div
-              className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs sm:text-sm font-semibold ${
-                step >= 2 ? 'bg-brand text-white' : 'bg-gray-200 text-gray-500'
-              }`}
-            >
-              2
+            <div className="flex justify-between mt-2 text-xs sm:text-sm text-gray-500">
+              <span>Booking Details</span>
+              <span>Customer Details</span>
             </div>
           </div>
-          <div className="flex justify-between mt-2 text-xs sm:text-sm text-gray-500">
-            <span>Booking Details</span>
-            <span>Customer Details</span>
+
+          <div>
+            {step === 1 && (
+              <BookingDetails
+                onContinue={() => setStep(2)}
+                onBookingTypeSelect={handleBookingTypeSelect}
+                bookingType={bookingData.bookingType}
+                car={selectedCar}
+              />
+            )}
+            {step === 2 && (
+              <CustomerDetailsForm
+                bookingType={bookingData.bookingType}
+                onBack={() => setStep(1)}
+                onSubmit={handleCustomerDetailsSubmit}
+                onTripDetailsSubmit={handleTripDetailsSubmit}
+                isSubmitting={telegramStatus.isSending}
+              />
+            )}
           </div>
         </div>
 
-        <div>
-          {step === 1 && (
-            <BookingDetails
-              onContinue={() => setStep(2)}
-              onBookingTypeSelect={handleBookingTypeSelect}
-              bookingType={bookingData.bookingType}
-              car={selectedCar}
-            />
-          )}
-          {step === 2 && (
-            <CustomerDetailsForm
-              bookingType={bookingData.bookingType}
-              onBack={() => setStep(1)}
-              onSubmit={handleCustomerDetailsSubmit}
-              onTripDetailsSubmit={handleTripDetailsSubmit}
-              isSubmitting={telegramStatus.isSending}
-            />
-          )}
-        </div>
+        {showSuccess && (
+          <SuccessPopup
+            onClose={handleSuccessClose}
+            telegramStatus={telegramStatus}
+            sanityStatus={sanityStatus}
+          />
+        )}
       </div>
-
-      {showSuccess && (
-        <SuccessPopup
-          onClose={handleSuccessClose}
-          telegramStatus={telegramStatus}
-          sanityStatus={sanityStatus}
-        />
-      )}
-    </div>
+    </Suspense>
   );
 };
 
