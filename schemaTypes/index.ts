@@ -5,4 +5,4 @@ import booking from './booking'
 import blog from './blog'
 import service from './services'
 
-export const schemaTypes = [siteSettings, service, contact, car, booking, blog]
+export const schemaTypes = [siteSettings, service, car, blog, booking, contact]

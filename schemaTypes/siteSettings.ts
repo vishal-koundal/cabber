@@ -28,6 +28,36 @@ export default defineType({
       validation: (Rule) => Rule.required().min(10).max(500),
     }),
     defineField({
+      name: 'homeHero',
+      title: 'Home Hero',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'title',
+          title: 'Title',
+          type: 'string',
+        }),
+        defineField({
+          name: 'description',
+          title: 'Description',
+          type: 'text',
+        }),
+        defineField({
+          name: 'redirect',
+          title: 'Button redirect to',
+          type: 'string',
+        }),
+        defineField({
+          name: 'featureImage',
+          title: 'Feature Image',
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+        }),
+      ],
+    }),
+    defineField({
       name: 'socialLinks',
       title: 'Social Links',
       type: 'object',

@@ -16,7 +16,7 @@ export default defineType({
       title: 'Slug',
       type: 'slug',
       options: {
-        source: 'name',
+        source: 'title',
         maxLength: 96,
       },
       validation: (Rule) => Rule.required(),
@@ -39,7 +39,7 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: 'name',
+      title: 'title',
       subtitle: 'description',
       media: 'featureImage',
     },
