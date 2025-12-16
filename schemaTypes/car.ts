@@ -21,6 +21,16 @@ export default defineType({
       },
       validation: (Rule) => Rule.required(),
     }),
+    {
+      name: 'keywords',
+      type: 'array',
+      title: 'Keywords',
+      description: 'Add keywords that describes car.',
+      of: [{type: 'string'}],
+      options: {
+        layout: 'tags',
+      },
+    },
     defineField({
       name: 'description',
       title: 'Car Description',
